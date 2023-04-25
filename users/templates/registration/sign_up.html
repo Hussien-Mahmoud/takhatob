@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="{% static 'users/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/normalize.css' %}">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <h2 class="logo">Happy Helper</h2>
+            <nav>
+                <i class="fas fa-bars toggle-menu"></i>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Find Specialists</a></li>
+                    <li><a href="#">Find Centers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div>
+                <button onclick="window.location.href = '{% url 'login' %}';" class="login">Login</button>
+            </div>
+        </div>
+
+        <div class="sign">
+            <div class="container">
+                <div class="main-sign">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <h2> Create New Account</h2>
+                        {{form.non_field_errors}}
+                        {% for field in form %}
+                        <div class="input">
+                            {{ field }}
+                            {{ field.errors }}
+                        </div>
+                        {% endfor %}
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
