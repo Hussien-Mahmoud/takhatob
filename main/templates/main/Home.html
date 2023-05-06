@@ -1,0 +1,176 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="container">
+                <h2 class="logo"> Happy Helper</h2>
+                <nav>
+                    <i class="fas fa-bars toggle-menu"></i>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="#">Find Speciallists</a></li>
+                        <li><a href="#">for Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <button class="login">Login</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="home">
+            <div class="container">
+                <div class="info-container">
+                    <h2> Our children are the most important <br> Project in our Lives</h2>
+                    <hr>
+                    <ul>
+                        <li> Harry up to treat your childern for mental
+                            illnesses such as autism and delayed speech.
+                        </li>
+                        <li>The first step is always difficult but the most
+                            important.
+                        </li>
+                        <li> Diseases such as autism are easier to treat
+                            the earlier and younger they are detected
+                        </li>
+                    </ul>
+                </div>
+                <div class="image">
+                    <img src="{% static 'images/photo_2023-04-28_18-54-13.jpg' %}">
+                </div>
+            </div>
+        </div>
+
+        <div class="specialist">
+            <div class="container">
+                <h3> Top Rated Specialists :</h3>
+                <div class="grid-container">
+                    <div class="box">
+                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
+                        <div class="info">
+                            <p> Name :Dr. Ahmed Ali</p>
+                            <p> Rate:9/10</p>
+                        </div>
+                        <a href="#"> Go To Profile</a>
+                    </div>
+
+                    <div class="box">
+                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
+                        <div class="info">
+                            <p> Name :Dr. Ahmed Yousef</p>
+                            <p> Rate:8/10</p>
+                        </div>
+                        <a href="#"> Go To Profile</a>
+                    </div>
+                    <div class="box">
+                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
+                        <div class="info">
+                            <p> Name :Dr. Ali Yousef</p>
+                            <p> Rate:7/10</p>
+                        </div>
+                        <a href="#"> Go To Profile</a>
+                    </div>
+
+                    <div class="box">
+                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
+                        <div class="info">
+                            <p> Name :Dr. Hussein mosad</p>
+                            <p> Rate:6/10</p>
+                        </div>
+                        <a href="#"> Go To Profile</a>
+                    </div>
+
+                    <div class="box">
+                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
+                        <div class="info">
+                            <p> Name :Dr. Mohamed Yousef</p>
+                            <p> Rate:6/10</p>
+                        </div>
+                        <a href="#"> Go To Profile</a>
+                    </div>
+                    <div class="box">
+                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
+                        <div class="info">
+                            <p> Name :Dr.Yousef Ali</p>
+                            <p> Rate:5/10</p>
+                        </div>
+                        <a href="#"> Go To Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- start center -->
+        <div class="centers">
+            <div class="container">
+                <h3> Top centers</h3>
+                <h3> Top Rated Centers This Week</h3>
+                <div class="cen">
+                    <div class="info-center">
+                        <img src="{% static 'images/WhatsApp Image 2023-04-29 at 00.29.20.jpg' %}">
+                        <div class="text">
+                            <p>
+                                there are doctors at the highest <br>
+                                level with latest treatment methods <br>
+                                and specialistsin treatment
+                            </p>
+                        </div>
+                        <a href="#">More Details</a>
+                    </div>
+                    <hr>
+                    <div class="info-center">
+                        <img src="{% static 'images/WhatsApp Image 2023-04-29 at 00.29.37.jpg' %}">
+                        <div class="text">
+                            <p> there are doctors at the highest <br> level with latest treatment methods <br> and specialistsin
+                                treatment
+                            </p>
+                        </div>
+                        <a href="#"> More Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  ed center -->
+
+        <!-- end home -->
+        <div class="fotter">
+            <div class="container">
+                <div class="foot">
+                    <div class="foot1">
+                        <h4>Learn More</h4>
+                        <hr>
+                        <p>For specialist </p>
+                        <p> our website</p>
+                        <p> cantact us</p>
+                    </div>
+                    <div class="foot2">
+                        <h4>Need help</h4>
+                        <hr>
+                        <p> cantact us </p>
+                        <p>Term of use</p>
+                    </div>
+                    <div class="foot3">
+                        <h4>Social</h4>
+                        <hr>
+                        <p>Facebock</p>
+                        <p>Twitter</p>
+                        <p>instgram</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
