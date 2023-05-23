@@ -44,7 +44,7 @@ def center_details(request, id):
         return HttpResponseNotAllowed(['GET', 'POST'])
 
     average = int(CenterReviews.objects.filter(center=center)
-                  .aggregate(Avg('rate')).get('rate__avg', 0))
+                  .aggregate(Avg('rate')).get('rate__avg') or 0)
     return render(request, 'centers/center-details.html', {
         'reviews': CenterReviews,
         'average_rating': average,
