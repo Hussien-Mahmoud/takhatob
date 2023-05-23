@@ -1,6 +1,10 @@
 from django.db import models
+from tinymce.models import HTMLField
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
+
+# from centers.models import CenterReviews
 
 # Create your models here.
 
@@ -59,20 +63,40 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['username']
 
 
-class Client(User):
-    REQUIRED_FIELDS = ['first_name', 'last_name']
-
-    class Meta:
-        verbose_name = 'client'
-
-
 class Center(User):
-    description = models.TextField(null=True, blank=True)
+    excerpt = models.CharField(max_length=100, null=True, blank=True)
+    description = HTMLField(null=True, blank=True)  # TextField inside
+    experience = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(
+        upload_to='images/centers/profile_images/',
+        default='images/centers/default-placeholder.png',
+    )
+    is_subscribed = models.BooleanField(default=False)
+
+    REQUIRED_FIELDS = ['username']
+
+    def get_absolute_url(self):
+        return reverse('center-details', args=[self.id])
 
     class Meta:
         verbose_name = 'center'
 
 
 class Specialist(User):
+    description = HTMLField(null=True, blank=True)  # TextField inside
+    image = models.ImageField(upload_to='images/specialists/profile_images/')
+
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
     class Meta:
         verbose_name = 'specialist'
+
+
+class Client(User):
+    # center_review = models.ManyToManyField(Center, through=CenterReviews, related_name='review')
+    # specialist_review = models.ManyToManyField(Specialist, through=SpecialistReviews, related_name='review')
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    class Meta:
+        verbose_name = 'client'
+

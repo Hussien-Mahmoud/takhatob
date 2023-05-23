@@ -32,8 +32,6 @@ CSRF_TRUSTED_ORIGINS = ['https://takhatob-production.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
-    "whitenoise.runserver_nostatic",
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,8 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'main',
-    'users',
+    'whitenoise.runserver_nostatic',
+    'tinymce',
+
+    'main.apps.MainConfig',
+    'users.apps.UsersConfig',
+    'chat.apps.ChatConfig',
+    'centers.apps.CentersConfig',
+    'specialists.apps.SpecialistsConfig',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'users.context_processors.users'
             ],
         },
     },
@@ -130,6 +135,8 @@ STATICFILES_DIRS = [
 ]
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'files'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

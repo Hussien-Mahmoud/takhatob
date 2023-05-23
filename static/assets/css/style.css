@@ -1,0 +1,1135 @@
+:root {
+    --main-color: #299EF3;
+}
+
+.specialists {
+    margin-top: 100px;
+    padding-top: 100px;
+}
+
+.specialists .container {
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr);
+    grid-gap: 120px; */
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    column-gap: 30px;
+    row-gap: 50px;
+    margin-left: auto;
+}
+
+@media (max-width: 990px) {
+    .specialists .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .specialists .container .box1 {
+        width: 100%;
+    }
+}
+
+.specialists .container .box1 {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid white;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.specialists .box1 a {
+    display: block;
+    color: var(--main-color);
+    width: fit-content;
+    margin: auto;
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: 2px solid var(--main-color);
+
+    text-decoration: none;
+}
+
+.specialists .box1 a.active, .specialists .box1 a:hover {
+    background-color: #299EF3;
+    color: white;
+
+}
+
+.specialists .box1 p {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.specialists .box1 h3 {
+    margin-top: 10px;
+}
+
+.container .row {
+    margin-top: 30px;
+}
+
+/*  style special detail  */
+.special .container .image img {
+    object-fit: cover;
+    width: 550px;
+    height: 550px;
+}
+
+.special {
+    margin-top: 100px;
+}
+
+.special .container {
+    display: flex;
+    justify-content: center;
+
+}
+
+@media (max-width: 990px) {
+    .special .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .special .container .image {
+        margin-top: 40px;
+
+    }
+
+    .special .container .image img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .special .container .content {
+        font-size: 15px;
+        font-weight: normal;
+    }
+
+    .special .container .content p span {
+        font-size: 20px;
+        font-weight: normal;
+    }
+
+    .special .container .content h3 {
+        font-size: 13px;
+
+    }
+
+    .special .container .content p {
+        color: red;
+    }
+
+    .special .container .content ul span {
+        font-size: 20px;
+
+
+    }
+
+    .special .container .content ul li {
+        font-size: 12px;
+    }
+
+    .special .container .image img {
+        max-width: 100%;
+        border-radius: 50%;
+    }
+
+}
+
+.special .container .image,
+.special .container .content {
+    flex: 1;
+}
+
+.special .container .image a {
+    display: block;
+
+}
+
+.reviews h3 {
+    font-size: 40px;
+}
+
+.special .container .content p {
+    font-size: 20px;
+    margin-top: 30px;
+    line-height: 1.4;
+    font-weight: bold;
+    color: #777;
+
+}
+
+.special .container .content h3 {
+    font-size: 40px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+/* .special  a{
+  display: block;
+ text-align: center;
+  text-decoration: none;
+  width: fit-content;
+  margin-left: 1200px;
+  margin-top: -85px;
+  padding: 20px;
+  border: 3px solid var(--main-color);
+  color: var(--main-color);
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 30px;
+} */
+.special button {
+    border: 1px solid var(--main-color);
+    border-radius: 30px;
+    padding: 20px 40px;
+    width: fit-content;
+    margin: auto;
+    background-color: white;
+}
+
+.special .image {
+    display: flex;
+    flex-direction: column;
+}
+
+.special .image img {
+    margin: auto;
+}
+
+.special a:hover {
+    background-color: #299EF3;
+    color: white;
+}
+
+.special .content span {
+    display: block;
+    color: var(--main-color);
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.special .container ul li {
+
+    margin-top: 11px;
+}
+
+.special .container .content .mark {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    width: 88%;
+}
+
+
+.reviews {
+    padding: 100px;
+}
+
+.reviews h3 {
+    text-align: center;
+}
+
+.reviews .container li {
+    list-style: none;
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.reviews .container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.reviews .container span {
+    display: block;
+    color: var(--main-color);
+    font-size: 30px;
+    margin-top: 23px;
+
+
+}
+
+.reviews .container {
+    /* width: 100%; */
+    margin: 70px auto;
+}
+
+.reviews .container p {
+    font-size: 20px;
+    color: #777;
+}
+
+.reviews .container ul li {
+    display: flex;
+
+    justify-content: space-between;
+    border: 1px solid var(--main-color);
+    padding: 35px 45px;
+    border-radius: 30px;
+
+}
+
+@media (max-width: 990px) {
+    .reviews {
+        width: 100%
+    }
+
+    .reviews .container ul li div {
+        width: 100%;
+    }
+
+    .reviews .container ul li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+/* m
+ .reviews .container ul li{
+   display: flex;
+   flex-direction: column;
+ }
+}
+
+
+.reviews .container ul li div{
+max-width: 70%;
+}
+/* media query */
+
+/*  style payment page */
+.payment {
+    margin-top: 100px;
+}
+
+.payment .container .imag img {
+    width: 100px;
+    height: 100px;
+}
+
+.payment .container {
+    display: flex;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+
+}
+
+.payment .container .toool {
+    flex-basis: 20%;
+}
+
+.payment .container .toool .infor {
+    height: 100vh;
+    background-color: #EFEFEF;
+    padding: 10px;
+}
+
+.payment .container .toool {
+    padding: 15px;
+    margin-top: 50px;
+}
+
+.payment .container .toool {
+
+    margin-right: 100px;
+}
+
+.payment .container .toool h4 {
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.payment .container .mainIn img {
+    width: 44px;
+    height: 40px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    border-bottom: none;
+    padding: 0 2px;
+    position: absolute;
+    right: 650px;
+}
+
+.payment .container .subIn .of {
+    display: flex;
+}
+
+.payment .container .imag {
+    text-align: right;
+}
+
+.payment .container .con h4 {
+    margin-top: 30px;
+}
+
+.payment .container .con .inputs .mainIn .pass {
+    width: 70%;
+    padding: 5px;
+    position: relative;
+
+    border-right: none;
+    border: 1px solid #ccc;
+}
+
+.payment .container .con .inputs .mainIn .pass::placeholder {
+    font-weight: bold;
+}
+
+.payment .container .subIn input {
+    margin-right: 15px;
+    padding: 8px 0;
+    margin-top: 15px;
+}
+
+.payment .container .subIn input::placeholder {
+    margin-left: 10px;
+
+}
+
+.payment .container .last input {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+.payment .container .last input::placeholder {
+    font-weight: bold;
+
+}
+
+.payment .container a {
+    display: block;
+    text-decoration: none;
+    background-color: var(--main-color);
+    width: fit-content;
+    margin: 50px auto;
+    padding: 10px 40px;
+    color: white;
+}
+
+.payment input:focus {
+    outline: none;
+}
+
+.payment .con h3 {
+    margin-top: 30px;
+}
+
+@media (max-width: 990px) {
+    .payment .container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .payment .container .imag {
+        text-align: center;
+    }
+
+    .container .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+}
+
+.contact {
+    margin-top: 200px;
+
+}
+
+/* .contact h1{
+  text-align: center;
+} */
+.contact .container {
+    margin-top: 70px;
+}
+
+.contact .head {
+    text-align: center;
+}
+
+.contact h1 {
+    border-bottom: 4px solid #283779;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 5px;
+}
+
+
+.contact p {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #283779;
+    font-weight: bold;
+    margin: 25px auto;
+}
+
+.contact .form {
+    text-align: center;
+    margin-top: 40px;
+}
+
+@media (max-width: 990px) {
+    .contact h1 {
+        margin-bottom: 40px;
+
+    }
+}
+
+@media (max-width: 990px) {
+    .contact .container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact .container textarea {
+        width: 100%;
+    }
+
+    .contact .container p {
+        margin: auto;
+        margin-bottom: 40px;
+    }
+}
+
+.contact .container .form input {
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    margin: 20px;
+}
+
+.contact .container .form .In {
+    margin: 0 20px 20px 0;
+}
+
+.contact .container .form input:focus {
+    outline: none;
+}
+
+.contact textarea:focus {
+    outline: none;
+}
+
+/************* center-details style *************/
+.center-detail .container .image img {
+    object-fit: cover;
+    width: 550px;
+    height: 550px;
+    margin: auto;
+
+    text-align: center;
+    border-radius: 50%;
+}
+
+.center-detail .container {
+    display: flex;
+    justify-content: center;
+}
+
+.center-detail .container .image,
+.center-detail .container .content {
+    flex: 1;
+}
+
+.center-detail button {
+    border: 1px solid var(--main-color);
+    border-radius: 30px;
+    padding: 20px 40px;
+    width: fit-content;
+    margin: auto;
+    background-color: white;
+    margin-top: 2em;
+}
+
+.center-detail .image {
+    display: flex;
+    flex-direction: column;
+}
+
+.center-detail {
+    margin-top: 100px;
+}
+
+.center-detail .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.center-detail .content p {
+    color: #777;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.center-detail span {
+    display: block;
+    color: var(--main-color);
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.center-detail ul li {
+    line-height: 2;
+    margin-top: 20px;
+    font-weight: bold;
+
+    color: #777;
+}
+
+.center-detail .content .para {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 990px) {
+    .center-detail .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .center-detail .container img {
+        text-align: center;
+        border-radius: 50%;
+        margin-top: 70px;
+    }
+}
+
+@media (max-width: 990px) {
+    .center-detail .container .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+/************************************************/
+
+.reviews .pInput {
+    display: flex;
+    justify-content: center;
+    margin: 80px 150px 0 0;
+}
+
+/*  style profile setting */
+.profile {
+    margin-top: 150px;
+}
+
+.profile .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile .container .setting {
+    flex-basis: 20%;
+    height: 100%;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    width: fit-content;
+
+    text-align: center;
+
+}
+
+.profile .container .setting h3:nth-child(1) {
+    background-color: #e7e9f8;
+    padding: 10px
+}
+
+.profile .container .setting h3 {
+    color: black;
+    font-weight: normal;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.profile .container .profile-detail {
+    margin-left: 80px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    flex-basis: 80%;
+    padding: 50px;
+    background-color: #e7e9f8;
+
+}
+
+.profile .container .profile-detail form h4 {
+    font-size: 20px;
+    color: black;
+    margin-top: 45px;
+}
+
+
+.profile .container .profile-detail #image-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile .container .profile-detail #image-block img {
+    border: 1px solid #eee;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.profile .container .profile-detail form #id_image {
+
+    display: none;
+}
+
+.profile .container .profile-detail form .image-upload {
+    width: fit-content;
+
+    background-color: #F0F4F9;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+
+
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.profile .container .profile-detail form input {
+    margin-top: 15px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid #ccc;
+}
+
+.profile .container .profile-detail form input:focus {
+    outline: none;
+}
+
+.profile .container .profile-detail form a {
+    text-decoration: none;
+    color: #283779;
+    font-weight: bold;
+    margin-left: 10px;
+    border-bottom: 3px solid #283779;
+}
+
+.profile .container .profile-detail form textarea {
+    width: 80%;
+    margin-top: 20px;
+}
+
+.profile .container .profile-detail form textarea a {
+    display: flex;
+    align-items: center;
+}
+
+.profile .container .profile-detail form .edit {
+    display: flex;
+    align-items: center;
+}
+
+.profile .container .profile-detail form .edit a {
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.profile .container .profile-detail form .sub {
+    background-color: #283779;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 990px) {
+
+    .profile .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profile .container .profile-detail {
+        margin: auto;
+    }
+
+
+    .profile .container .setting {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 80%;
+        margin: 40px auto;
+    }
+}
+
+/************************************/
+
+.reviews form .review input {
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 20px;
+    border: 3px solid #299EF3;
+}
+
+.reviews h1 {
+    text-align: center;
+}
+
+.reviews form {
+    margin-left: 100px;
+}
+
+.reviews .review #id_rate {
+    width: 15%;
+    margin-bottom: 20px;
+}
+
+.reviews .review {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviews .review input {
+    margin-top: 40px;
+}
+
+.reviews .review h4 {
+    margin-top: 30px;
+}
+
+.review {
+    margin-top: 60px;
+}
+
+.review h4 {
+    font-size: 30px;
+}
+
+.reviews .review .mit {
+    background-color: #299EF3;
+    display: block;
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 990px) {
+    .reviews .review #Review {
+        width: 30%
+    }
+}
+
+
+/* contact */
+.form a {
+    text-decoration: none;
+    background-color: #299EF3;
+    display: block;
+    padding: 10px;
+    width: fit-content;
+    margin: 20px auto;
+    color: white;
+    border-radius: 6px;
+}
+
+/*  style .css */
+.chat {
+    margin-top: 100px;
+}
+
+.chat .container .rightSight .rBox {
+    margin-top: 50px;
+}
+
+.chat .container .rightSight {
+    width: 25%;
+    background-color: #e7e9f8;
+    padding: 20px;
+    border-right: 3px solid #ccc;
+}
+
+.chat .container .rightSight h1 {
+    font-size: 20px;
+    color: #299EF3;
+    text-align: center;
+}
+
+.chat .container .rightSight .rBox img {
+    width: 40px;
+}
+
+.chat .container {
+    display: flex;
+
+}
+
+.chat .container .leftSide img {
+    width: 40px;
+}
+
+.chat .container .leftSide {
+    width: 60%;
+
+}
+
+.chat .container .rightSight .n1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat .container .rightSight .n1 h3 {
+    color: black;
+    font-size: 17px;
+    margin-left: -20px;
+}
+
+.chat .container .rightSight .n1 p {
+    margin-top: 12px;
+
+}
+
+.chat .container .rightSight .second {
+    margin-left: 60px;
+    color: black;
+}
+
+.chat .container .rightSight .type {
+    margin-left: 50px;
+    color: #299EF3;
+}
+
+.chat .container .leftSide .heading {
+    margin-bottom: 40px;
+    border-bottom: 3px solid #ccc;
+    position: relative;
+}
+
+.chat .container .leftSide h4 {
+    font-size: 20px;
+    color: #eee;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+}
+
+.chat .container .leftSide .bor h4::after {
+    content: "";
+    position: absolute;
+    background-color: #ccc;
+    width: 250px;
+    height: 1px;
+    bottom: 8px;
+    right: -3px;
+}
+
+.chat .container .leftSide .bor h4::before {
+    content: "";
+    position: absolute;
+    background-color: #ccc;
+    width: 250px;
+    height: 1px;
+    bottom: 8px;
+    left: 4px;
+}
+
+.chat .container .leftSide .heading .main {
+    display: flex;
+
+}
+
+.chat .container .leftSide .heading h1 {
+    font-size: 20px;
+    color: black;
+    margin-left: 20px;
+}
+
+.chat .container .leftSide .heading {
+    background-color: #e7e9f8;
+    padding: 5px 20px;
+
+    font-weight: bold;
+}
+
+.chat .container .leftSide .heading span {
+    display: block;
+    color: #299EF3;
+    margin-left: 60px;
+    margin-bottom: 10px;
+    font-weight: bold;
+
+}
+
+.chat .bodyChat {
+    margin-left: 30px;
+    position: relative;
+    margin-top: 130;
+}
+
+.chat .bodyChat .body {
+    text-align: right;
+    position: relative;
+    margin-top: 50px;
+
+}
+
+.chat .bodyChat .b1 {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.chat .bodyChat p {
+    margin-right: 15px;
+    margin-left: 20px;
+
+}
+
+.chat .bodyChat .body h4 {
+    font-size: 15px;
+    background-color: #299EF3;
+    padding: 5px 30px 5px 30px;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    width: 300px;
+    margin-left: 320px;
+    text-align: left;
+}
+
+.chat .doctor {
+    margin-top: 50px;
+}
+
+.chat .doctor h3 {
+    font-size: 20px;
+    margin-left: 15px;
+    color: black;
+    font-weight: normal;
+}
+
+.chat .doctor .dD {
+    display: flex;
+    align-items: center;
+}
+
+.chat .bodyChat .doctor h4 {
+    font-size: 15px;
+    background-color: #eee;
+    width: fit-content;
+    padding: 5px 30px 5px 30px;
+    border-radius: 10px;
+    margin: 15px 0 15px 45px;
+    color: black;
+    font-weight: normal;
+}
+
+.chat .leftSide .message {
+    background-color: #e7e9f8;
+    padding: 40px;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.chat .leftSide .message input {
+    width: 70%;
+    margin: auto;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.chat .leftSide .message input:focus {
+    outline: none;
+}
+
+.chat .leftSide .message input::placeholder {
+    padding-left: 60px;
+}
+
+@media (max-width: 990px) {
+    .chat .container .rightSight {
+        display: none;
+    }
+
+    .chat .container .leftSide .bor h4::after {
+        content: "";
+        position: absolute;
+        background-color: #ccc;
+        width: 120px;
+        height: 1px;
+        bottom: 8px;
+        right: -3px;
+    }
+
+    .chat .container .leftSide .bor h4::before {
+        content: "";
+        position: absolute;
+        background-color: #ccc;
+        width: 120px;
+        height: 1px;
+        bottom: 8px;
+        left: 4px;
+    }
+
+    .chat .container .leftSide .message {
+        margin-left: 110px;
+    }
+
+    .chat .container .leftSide .message input {
+        margin-left: 20px;
+    }
+
+    .chat .container .leftSide .heading {
+        width: 100%;
+        margin-left: 130px;
+    }
+
+    .chat .container .leftSide .bor {
+        margin-left: 300px;
+    }
+
+}
+
+@media (max-width: 780px) {
+    .chat .bodyChat .body h4 {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .chat .leftSide {
+        position: relative;
+    }
+
+    .chat .bodyChat .doctor {
+        margin-right: 200px;
+    }
+}
+  
+   
+
+   
+     
+
+
+
+
+
+
+

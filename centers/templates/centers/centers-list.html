@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block inner-content %}
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 py-3">
+
+                </div>
+                <!--/.bg-holder-->
+
+                <h1 class="text-center"> Our Centers</h1>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <!--/.bg-holder-->
+
+        <div class="container">
+            <div class="row">
+                {% for center in centers %}
+                <div class="col-sm-6 col-lg-3 mb-4">
+                    <div class="card h-100 shadow card-span rounded-3">
+                        <img class="card-img-top rounded-top-3" src="{{ center.image.url }}" alt="news"/>
+                        <div class="card-body">
+                            <span class="fs-lg-1 text-primary me-3">{{ center.username }} Center</span>
+                            <svg class="bi bi-calendar2 me-2" xmlns="http://www.w3.org/2000/svg" width="12"
+                                 height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"></path>
+                                <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"></path>
+                            </svg>
+                            <span class="fs--1"></span>
+                            <p>Average rate: 9/10</p>
+                            <a class="stretched-link" href="{{ center.get_absolute_url }}">read center info</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </section>
+    <section class="py-0 bg-secondary">
+        <div class="bg-holder opacity-25"
+             style="background-image:url({% static 'assets/img/gallery/dot-bg.png' %});background-position:top left;margin-top:-3.125rem;background-size:auto;">
+        </div>
+        <!--/.bg-holder-->
+
+        <div class="container">
+            <div class="row py-8">
+                <div class="col-12 col-sm-12 col-lg-6 mb-4 order-0 order-sm-0"><a class="text-decoration-none"
+                                                                                  href="#"> Live Speech</a>
+                    <p class="text-light my-4">The Most imporatnt website<br> to care childern .</p>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-2 mb-3 order-2 order-sm-1"></div>
+                <div class="col-6 col-sm-4 col-lg-2 mb-3 order-3 order-sm-2">
+                    <h5 class="lh-lg fw-bold text-light mb-4 font-sans-serif">Membership</h5>
+                    <ul class="list-unstyled mb-md-4 mb-lg-0">
+                        <li class="lh-lg"><a class="footer-link" href="#!">Free trial</a></li>
+                        <li class="lh-lg"><a class="footer-link" href="#!">Silver</a></li>
+                        <li class="lh-lg"><a class="footer-link" href="#!">Premium</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-2 mb-3 order-3 order-sm-2">
+                    <h5 class="lh-lg fw-bold text-light mb-4 font-sans-serif"> Customer Care</h5>
+                    <ul class="list-unstyled mb-md-4 mb-lg-0">
+                        <li class="lh-lg"><a class="footer-link" href="#!">About Us</a></li>
+                        <li class="lh-lg"><a class="footer-link" href="#!">Contact US</a></li>
+                        <li class="lh-lg"><a class="footer-link" href="#!">Get Update</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <section class="py-0 bg-primary">
+
+            <div class="container">
+                <div class="row justify-content-md-between justify-content-evenly py-4">
+                    <div class="col-12 col-sm-8 col-md-6 col-lg-auto text-center text-md-start">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

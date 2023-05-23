@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block inner-content %}
+    <div class="center-detail">
+        <div class="container">
+            <div class="content">
+                <h2>{{ center.username }} Center</h2>
+                {% if center.excerpt is not None %}
+                    <p>{{ center.excerpt }}</p>
+                {% endif %}
+                <span>Description</span>
+                <ul style="list-style: none">
+                    <li>{{ center.description|safe }}</li>
+                </ul>
+                <div class="para">
+                    <p><span>Average Rating: </span>{{ average_rating }}/10</p>
+                    {% if center.excerpt is not None %}
+                        <p><span>Experience: </span>{{ center.experience }} years</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="image">
+                <img src="{{ center.image.url }}" alt="">
+                {% if user.id == center.id %}
+                <button onclick="window.location.href = '{% url 'center-edit' center.id %}';">edit</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="reviews">
+        <h1>Reviews</h1>
+    {% if user in clients and not user in reviews.client %}
+        <form action="" method="POST">
+            <div class="review">
+                <h4> Your review</h4>
+                {% csrf_token %}
+                {{ form.text }}
+                <h4>Rate</h4>
+                {{ form.rate }}
+                <input type="submit" value="add Review" class="mit">
+            </div>
+        </form>
+    {% endif %}
+
+        <div class="container">
+            <ul>
+
+            {% if center.reviews.all %}
+                {% for review in center.reviews.all %}
+                <li class="shadow">
+                    <div>
+                        <h4>{{ review.client.first_name }} {{ review.client.last_name }}</h4>
+                        <p>{{ review.text }}</p>
+                    </div>
+                    <span>
+                    <p class="at"><span>Rate: </span>{{ review.rate }}/10</p>
+                    </span>
+                </li>
+                {% endfor %}
+            {% endif %}
+
+            </ul>
+        </div>
+    </div>
+{% endblock %}

@@ -1,176 +1,597 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+{% block style %}
+{% endblock %}
 
-        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
+{% block inner-content %}
+    <section class="py-xxl-10 pb-0" id="home">
+        <div class="bg-holder bg-size"
+             style="background-image:url({% static 'assets/img/gallery/hero-bg.png' %});background-position:top center;background-size:cover;">
+        </div>
+        <!--/.bg-holder-->
 
-    <body>
-        <div class="header">
-            <div class="container">
-                <h2 class="logo"> Happy Helper</h2>
-                <nav>
-                    <i class="fas fa-bars toggle-menu"></i>
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="#">Find Speciallists</a></li>
-                        <li><a href="#">for Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </nav>
-                <div>
-                    <button class="login">Login</button>
+        <div class="container">
+            <div class="row min-vh-xl-100 min-vh-xxl-25">
+                <div class="col-md-5 col-xl-6 col-xxl-7 order-0 order-md-1 text-end"><img class="pt-7 pt-md-0 w-100"
+                                                                                          src="{% static 'assets/img/gallery/hero.png' %}"
+                                                                                          alt="hero-header"/></div>
+                <div class="col-md-75 col-xl-6 col-xxl-5 text-md-start text-center py-6">
+                    <h1 class="fw-light font-base fs-6 fs-xxl-7">We're
+                        <strong>Wish </strong>to<br/>your&nbsp;<strong>better life.</strong></h1>
+                    <p class="fs-1 mb-5">You can get the care you need 24h – be it online or in <br/>person. You
+                        will be treated by caring specialist. </p><a class="btn btn-lg btn-primary rounded-pill"
+                                                                     href="#!" role="button">Make an Appointment</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="home">
-            <div class="container">
-                <div class="info-container">
-                    <h2> Our children are the most important <br> Project in our Lives</h2>
-                    <hr>
-                    <ul>
-                        <li> Harry up to treat your childern for mental
-                            illnesses such as autism and delayed speech.
-                        </li>
-                        <li>The first step is always difficult but the most
-                            important.
-                        </li>
-                        <li> Diseases such as autism are easier to treat
-                            the earlier and younger they are detected
-                        </li>
-                    </ul>
-                </div>
-                <div class="image">
-                    <img src="{% static 'images/photo_2023-04-28_18-54-13.jpg' %}">
+    <!-- end of .container-->
+
+    <!-- ============================================-->
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+    <section class="bg-secondary">
+        <div class="bg-holder"
+             style="background-image:url({% static 'assets/img/gallery/bg-eye-care.png' %});background-position:center;background-size:contain;">
+        </div>
+        <!--/.bg-holder-->
+
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5 col-xxl-6"><img class="img-fluid"
+                                                     src="{% static 'assets/img/gallery/one.png.jpg' %}"
+                                                     alt="..."/></div>
+                <div class="col-md-7 col-xxl-6 text-center text-md-start">
+                    <h2 class="fw-bold text-light mb-4 mt-4 mt-lg-0">Top rated Professionals<br
+                            class="d-none d-sm-block"/>specialits .</h2>
+                    <p class="text-light">We've built a care system that puts your needs first.<br
+                            class="d-none d-sm-block"/>For us, there is nothing more important than the health of
+                        <br class="d-none d-sm-block"/>you and your loved ones. </p>
+                    <div class="py-3"><a class="btn btn-lg btn-light rounded-pill" href="#!" role="button">Learn
+                        more </a></div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="specialist">
-            <div class="container">
-                <h3> Top Rated Specialists :</h3>
-                <div class="grid-container">
-                    <div class="box">
-                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
-                        <div class="info">
-                            <p> Name :Dr. Ahmed Ali</p>
-                            <p> Rate:9/10</p>
-                        </div>
-                        <a href="#"> Go To Profile</a>
-                    </div>
 
-                    <div class="box">
-                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
-                        <div class="info">
-                            <p> Name :Dr. Ahmed Yousef</p>
-                            <p> Rate:8/10</p>
-                        </div>
-                        <a href="#"> Go To Profile</a>
-                    </div>
-                    <div class="box">
-                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
-                        <div class="info">
-                            <p> Name :Dr. Ali Yousef</p>
-                            <p> Rate:7/10</p>
-                        </div>
-                        <a href="#"> Go To Profile</a>
-                    </div>
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+    <section class="pb-0" id="about">
 
-                    <div class="box">
-                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
-                        <div class="info">
-                            <p> Name :Dr. Hussein mosad</p>
-                            <p> Rate:6/10</p>
-                        </div>
-                        <a href="#"> Go To Profile</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 py-3">
+                    <div class="bg-holder bg-size"
+                         style="background-image:url({% static 'assets/img/gallery/about-us.png' %});background-position:top center;background-size:contain;">
                     </div>
+                    <!--/.bg-holder-->
 
-                    <div class="box">
-                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
-                        <div class="info">
-                            <p> Name :Dr. Mohamed Yousef</p>
-                            <p> Rate:6/10</p>
-                        </div>
-                        <a href="#"> Go To Profile</a>
-                    </div>
-                    <div class="box">
-                        <img src="{% static 'images/WhatsApp Image 2023-04-28 at 22.08.21.jpg' %}">
-                        <div class="info">
-                            <p> Name :Dr.Yousef Ali</p>
-                            <p> Rate:5/10</p>
-                        </div>
-                        <a href="#"> Go To Profile</a>
+                    <h1 class="text-center">ABOUT US</h1>
+                </div>
+            </div>
+        </div>
+        <!-- end of .container-->
+
+    </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+    <section class="py-5">
+        <!--/.bg-holder-->
+
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 order-lg-1 mb-5 mb-lg-0"><img class="fit-cover rounded-circle w-100"
+                                                                   src="{% static 'assets/img/gallery/talk.jpeg' %}"
+                                                                   alt="..."/>
+                </div>
+                <div class="col-md-6 text-center text-md-start">
+                    <h2 class="fw-bold mb-4">We are developing <br class="d-none d-sm-block"/>system around you</h2>
+                    <p>We think that everyone should have easy access to excellent <br class="d-none d-sm-block"/>care.
+                        Our aim is to make the procedure as simple as <br class="d-none d-sm-block"/>possible for
+                        our patients and to offer treatment no matter<br class="d-none d-sm-block"/>where they are —
+                        in person or at their convenience. </p>
+                    <div class="py-3">
+                        <button class="btn btn-lg btn-outline-primary rounded-pill" type="submit">Learn more
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- start center -->
-        <div class="centers">
-            <div class="container">
-                <h3> Top centers</h3>
-                <h3> Top Rated Centers This Week</h3>
-                <div class="cen">
-                    <div class="info-center">
-                        <img src="{% static 'images/WhatsApp Image 2023-04-29 at 00.29.20.jpg' %}">
-                        <div class="text">
-                            <p>
-                                there are doctors at the highest <br>
-                                level with latest treatment methods <br>
-                                and specialistsin treatment
-                            </p>
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+    <section class="pb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 py-3">
+
+                </div>
+                <!--/.bg-holder-->
+
+                <h1 class="text-center">OUR Specialits</h1>
+            </div>
+        </div>
+        <!-- end of .container-->
+
+    </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+    <section class="py-5">
+        <!--/.bg-holder-->
+
+        <div class="container">
+            <div class="row flex-center">
+                <div class="col-xl-10 px-0">
+                    <div class="carousel slide" id="carouselExampleDark" data-bs-ride="carousel">
+                        <a class="carousel-control-prev carousel-icon z-index-2" href="#carouselExampleDark"
+                                role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next carousel-icon z-index-2" href="#carouselExampleDark"
+                           role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <div class="row h-100 m-lg-7 mx-3 mt-6 mx-md-4 my-md-7">
+                                    <div class="col-md-4 mb-8 mb-md-0">
+                                        <div class="card card-span h-100 shadow">
+                                            <div class="card-body d-flex flex-column flex-center py-5"><img
+                                                    src="{% static 'assets/img/gallery/anita.png' %}" width="128"
+                                                    alt="..."/>
+                                                <h5 class="mt-3">Anita Deshai</h5>
+                                                <p class="text-600 mb-0">rate:7/10</p>
+                                                <p class="text-600 mb-4">1years experience</p>
+                                                <div class="text-center">
+                                                    <button class="btn btn-outline-secondary rounded-pill"
+                                                            type="submit">View Profile
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-8 mb-md-0">
+                                        <div class="card card-span h-100 shadow">
+                                            <div class="card-body d-flex flex-column flex-center py-5"><img
+                                                    src="{% static 'assets/img/gallery/jane.png' %}" width="128"
+                                                    alt="..."/>
+                                                <h5 class="mt-3">Jane Flakis</h5>
+
+                                                <p class="text-600 mb-0">reate:8/10</p>
+                                                <p class="text-600 mb-4"> 4years experience</p>
+                                                <div class="text-center">
+                                                    <button class="btn btn-outline-secondary rounded-pill"
+                                                            type="submit">View Profile
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-8 mb-md-0">
+                                        <div class="card card-span h-100 shadow">
+                                            <div class="card-body d-flex flex-column flex-center py-5"><img
+                                                    src="{% static 'assets/img/gallery/leo-mario.png' %}" width="128"
+                                                    alt="..."/>
+                                                <h5 class="mt-3">Leo Mario</h5>
+
+                                                <p class="text-600 mb-0"> rate:9/10</p>
+                                                <p class="text-600 mb-4">8 years experience</p>
+                                                <div class="text-center">
+                                                    <button class="btn btn-secondary hover-top rounded-pill border-0"
+                                                            type="submit">View Profile
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <div class="row h-100 m-lg-7 mx-3 mt-6 mx-md-4 my-md-7">
+                                    <div class="col-md-4 mb-8 mb-md-0">
+                                        <div class="card card-span h-100 shadow">
+                                            <div class="card-body d-flex flex-column flex-center py-5"><img
+                                                    src="{% static 'assets/img/gallery/anita.png' %}" width="128"
+                                                    alt="..."/>
+                                                <h5 class="mt-3">Anita Deshai</h5>
+
+                                                <p class="text-600 mb-0">rate:7/10</p>
+                                                <p class="text-600 mb-4">4 years experience</p>
+                                                <div class="text-center">
+                                                    <button class="btn btn-outline-secondary rounded-pill"
+                                                            type="submit">View Profile
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-8 mb-md-0">
+                                        <div class="card card-span h-100 shadow">
+                                            <div class="card-body d-flex flex-column flex-center py-5"><img
+                                                    src="{% static 'assets/img/gallery/jane.png' %}" width="128"
+                                                    alt="..."/>
+                                                <h5 class="mt-3">Jane Flakis</h5>
+
+                                                <p class="text-600 mb-0">rate:8/10</p>
+                                                <p class="text-600 mb-4">4 years experience</p>
+                                                <div class="text-center">
+                                                    <button class="btn btn-outline-secondary rounded-pill"
+                                                            type="submit">View Profile
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-8 mb-md-0">
+                                        <div class="card card-span h-100 shadow">
+                                            <div class="card-body d-flex flex-column flex-center py-5"><img
+                                                    src="{% static 'assets/img/gallery/leo-mario.png' %}" width="128"
+                                                    alt="..."/>
+                                                <h5 class="mt-3">Leo Mario</h5>
+
+                                                <p class="text-600 mb-0">rate:9/10</p>
+                                                <p class="text-600 mb-4">8 years experience</p>
+                                                <div class="text-center">
+                                                    <button class="btn btn-secondary hover-top rounded-pill border-0"
+                                                            type="submit">View Profile
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row h-100 m-lg-7 mx-3 mt-6 mx-md-4 my-md-7">
+                                    <div class="col-md-4 mb-8 mb-md-0">
+                                        <div class="card card-span h-100 shadow">
+                                            <div class="card-body d-flex flex-column flex-center py-5"><img
+                                                    src="{% static 'assets/img/gallery/anita.png' %}" width="128"
+                                                    alt="..."/>
+                                                <h5 class="mt-3">Anita Deshai</h5>
+
+                                                <p class="text-600 mb-0">rate:7/10</p>
+                                                <p class="text-600 mb-4">1 years experience</p>
+                                                <div class="text-center">
+                                                    <button class="btn btn-outline-secondary rounded-pill"
+                                                            type="submit">View Profile
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-8 mb-md-0">
+                                        <div class="card card-span h-100 shadow">
+                                            <div class="card-body d-flex flex-column flex-center py-5"><img
+                                                    src="{% static 'assets/img/gallery/jane.png' %}" width="128"
+                                                    alt="..."/>
+                                                <h5 class="mt-3">Jane Flakis</h5>
+
+                                                <p class="text-600 mb-0">rate:8/10</p>
+                                                <p class="text-600 mb-4">4 years experience</p>
+                                                <div class="text-center">
+                                                    <button class="btn btn-outline-secondary rounded-pill"
+                                                            type="submit">View Profile
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-8 mb-md-0">
+                                        <div class="card card-span h-100 shadow">
+                                            <div class="card-body d-flex flex-column flex-center py-5"><img
+                                                    src="{% static 'assets/img/gallery/leo-mario.png' %}" width="128"
+                                                    alt="..."/>
+                                                <h5 class="mt-3">Leo Mario</h5>
+
+                                                <p class="text-600 mb-0">
+                                                <p> rate:9/10</p>
+                                                <p class="text-600 mb-4">8 years experience</p>
+                                                <div class="text-center">
+                                                    <button class="btn btn-secondary hover-top rounded-pill border-0"
+                                                            type="submit">View Profile
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <a href="#">More Details</a>
-                    </div>
-                    <hr>
-                    <div class="info-center">
-                        <img src="{% static 'images/WhatsApp Image 2023-04-29 at 00.29.37.jpg' %}">
-                        <div class="text">
-                            <p> there are doctors at the highest <br> level with latest treatment methods <br> and specialistsin
-                                treatment
-                            </p>
-                        </div>
-                        <a href="#"> More Details</a>
                     </div>
                 </div>
             </div>
         </div>
-        <!--  ed center -->
+    </section>
 
-        <!-- end home -->
-        <div class="fotter">
-            <div class="container">
-                <div class="foot">
-                    <div class="foot1">
-                        <h4>Learn More</h4>
-                        <hr>
-                        <p>For specialist </p>
-                        <p> our website</p>
-                        <p> cantact us</p>
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+    <section class="py-5">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 py-3">
+
+                </div>
+                <!--/.bg-holder-->
+
+                <h1 class="text-center">PEOPLE WHO LOVE US</h1>
+            </div>
+        </div>
+        <!-- end of .container-->
+
+    </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+    <section class="py-8">
+        <!--/.bg-holder-->
+
+        <div class="container">
+            <div class="row align-items-center offset-sm-1">
+                <div class="carousel slide" id="carouselPeople" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="10000">
+                            <div class="row h-100">
+
+                                <h5 class="mt-3 fw-medium text-secondary">Edward Newgate</h5>
+                                <p class="fw-normal mb-0">Founder Circle</p>
+                            </div>
+                            <div class="col-sm-9 text-center text-sm-start pt-3 pt-sm-0">
+                                <h2>Fantastic Response!</h2>
+                                <div class="my-2"><i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i><i
+                                        class="fas fa-star me-2"></i><i class="fas fa-star-half-alt me-2"></i><i
+                                        class="far fa-star"></i></div>
+                                <p>This medical and health care facility distinguishes itself from the competition
+                                    by providing technologically advanced medical and health care. A mobile app and
+                                    a website are available via which you can easily schedule appointments, get
+                                    online consultations, and see physicians, who will assist you through the whole
+                                    procedure. And all of the prescriptions, medications, and other services they
+                                    offer are 100% genuine, medically verified, and proved. I believe that the
+                                    Livedoc staff is doing an outstanding job. Highly recommended their health care
+                                    services.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="foot2">
-                        <h4>Need help</h4>
-                        <hr>
-                        <p> cantact us </p>
-                        <p>Term of use</p>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <div class="row h-100">
+                            <div class="col-sm-3 text-center"><img
+                                    src="{% static 'assets/img/gallery/people-who-loves.png' %}"
+                                    width="100" alt=""/>
+                                <h5 class="mt-3 fw-medium text-secondary">Jhon Doe</h5>
+                                <p class="fw-normal mb-0">UI/UX Designer</p>
+                            </div>
+                            <div class="col-sm-9 text-center text-sm-start pt-3 pt-sm-0">
+                                <h2>Fantastic Response!</h2>
+                                <div class="my-2"><i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i><i
+                                        class="fas fa-star me-2"></i><i class="fas fa-star-half-alt me-2"></i><i
+                                        class="far fa-star"></i></div>
+                                <p>This medical and health care facility distinguishes itself from the competition
+                                    by providing technologically advanced medical and health care. A mobile app and
+                                    a website are available via which you can easily schedule appointments, get
+                                    online consultations, and see physicians, who will assist you through the whole
+                                    procedure. And all of the prescriptions, medications, and other services they
+                                    offer are 100% genuine, medically verified, and proved. I believe that the
+                                    Livedoc staff is doing an outstanding job. Highly recommended their health care
+                                    services.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="foot3">
-                        <h4>Social</h4>
-                        <hr>
-                        <p>Facebock</p>
-                        <p>Twitter</p>
-                        <p>instgram</p>
+                    <div class="carousel-item">
+                        <div class="row h-100">
+                            <div class="col-sm-3 text-center"><img
+                                    src="{% static 'assets/img/gallery/people-who-loves.png' %}"
+                                    width="100" alt=""/>
+                                <h5 class="mt-3 fw-medium text-secondary">Jeny Doe</h5>
+                                <p class="fw-normal mb-0">Web Designer</p>
+                            </div>
+                            <div class="col-sm-9 text-center text-sm-start pt-3 pt-sm-0">
+                                <h2>Fantastic Response!</h2>
+                                <div class="my-2"><i class="fas fa-star me-2"></i><i class="fas fa-star me-2"></i><i
+                                        class="fas fa-star me-2"></i><i class="fas fa-star-half-alt me-2"></i><i
+                                        class="far fa-star"></i></div>
+                                <p>This medical and health care facility distinguishes itself from the competition
+                                    by providing technologically advanced medical and health care. A mobile app and
+                                    a website are available via which you can easily schedule appointments, get
+                                    online consultations, and see physicians, who will assist you through the whole
+                                    procedure. And all of the prescriptions, medications, and other services they
+                                    offer are 100% genuine, medically verified, and proved. I believe that the
+                                    Livedoc staff is doing an outstanding job. Highly recommended their health care
+                                    services.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="position-relative z-index-2 mt-5">
+                        <ol class="carousel-indicators">
+                            <li class="active" data-bs-target="#carouselPeople" data-bs-slide-to="0"></li>
+                            <li data-bs-target="#carouselPeople" data-bs-slide-to="1"></li>
+                            <li data-bs-target="#carouselPeople" data-bs-slide-to="2"></li>
+                        </ol>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </section>
+
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+    <section class="py-5">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 py-3">
+
+                </div>
+                <!--/.bg-holder-->
+
+                <h1 class="text-center">APPOINTMENT</h1>
+            </div>
+        </div>
+
+        <!-- end of .container-->
+
+    </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+    <section class="py-8">
+        <div class="container">
+            <div class="row">
+                <div class="bg-holder bg-size"
+                     style="background-image:url({% static 'assets/img/gallery/dot-bg.png' %});background-position:bottom right;background-size:auto;">
+                </div>
+                <!--/.bg-holder-->
+
+                <div class="col-lg-6 z-index-2 mb-5"><img class="w-100" src="{% static 'assets/img/gallery/two.jpg' %}"
+                                                          alt="..."/>
+                </div>
+                <div class="col-lg-6 z-index-2">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label class="visually-hidden" for="inputName">Name</label>
+                            <input class="form-control form-livedoc-control" id="inputName" type="text"
+                                   placeholder="Name"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="visually-hidden" for="inputPhone">Phone</label>
+                            <input class="form-control form-livedoc-control" id="inputPhone" type="text"
+                                   placeholder="Phone"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="inputCategory">Category</label>
+                            <select class="form-select" id="inputCategory">
+                                <option selected="selected">Category</option>
+                                <option> Category One</option>
+                                <option> Category Two</option>
+                                <option> Category Three</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label visually-hidden" for="inputEmail">Email</label>
+                            <input class="form-control form-livedoc-control" id="inputEmail" type="email"
+                                   placeholder="Email"/>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label visually-hidden" for="validationTextarea">Message</label>
+                            <textarea class="form-control form-livedoc-control" id="validationTextarea"
+                                      placeholder="Message" style="height: 250px;" required="required"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-grid">
+                                <button class="btn btn-primary rounded-pill" type="submit">Sign in</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-5">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 py-3">
+                </div>
+                <!--/.bg-holder-->
+
+                <h1 class="text-center"> Our Centers</h1>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="bg-holder bg-size"
+             style="background-image:url({% static 'assets/img/gallery/dot-bg.png' %});background-position:top left;background-size:auto;">
+        </div>
+        <!--/.bg-holder-->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3 mb-4">
+                    <div class="card h-100 shadow card-span rounded-3"><img class="card-img-top rounded-top-3"
+                                                                            src="{% static 'assets/img/gallery/one.png.jpg' %}"
+                                                                            alt="news"/>
+                        <div class="card-body"><span class="fs--1 text-primary me-3">Lifestyle</span>
+                            <svg class="bi bi-calendar2 me-2" xmlns="http://www.w3.org/2000/svg" width="12"
+                                 height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"></path>
+                                <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"></path>
+                            </svg>
+                            <span class="fs--1 text-900">Nov 21, 2021</span><span class="fs--1"></span>
+                            <h5 class="font-base fs-lg-0 fs-xl-1 my-3">Caring Childern that not able to talk</h5>
+                            <p> rate: 9/10</p><a class="stretched-link" href="#!">read center info</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-4">
+                    <div class="card h-100 shadow card-span rounded-3"><img class="card-img-top rounded-top-3"
+                                                                            src="{% static 'assets/img/gallery/R.jpeg' %}"
+                                                                            alt="news"/>
+                        <div class="card-body"><span class="fs--1 text-primary me-3">Lifestyle</span>
+                            <svg class="bi bi-calendar2 me-2" xmlns="http://www.w3.org/2000/svg" width="12"
+                                 height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"></path>
+                                <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"></path>
+                            </svg>
+                            <span class="fs--1 text-900">Nov 25, 2021</span><span class="fs--1"></span>
+                            <h5 class="font-base fs-lg-0 fs-xl-1 my-3"> caring Childern that not able to talk</h5>
+                            <p> reate:8/10</p><a class="stretched-link" href="#!">read center info</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-4">
+                    <div class="card h-100 shadow card-span rounded-3"><img class="card-img-top rounded-top-3"
+                                                                            src="{% static 'assets/img/gallery/m.jpeg' %}"
+                                                                            alt="news"/>
+                        <div class="card-body"><span class="fs--1 text-primary me-3">Health</span>
+                            <svg class="bi bi-calendar2 me-2" xmlns="http://www.w3.org/2000/svg" width="12"
+                                 height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"></path>
+                                <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"></path>
+                            </svg>
+                            <span class="fs--1 text-900">Nov 28, 2021</span><span class="fs--1"></span>
+                            <h5 class="font-base fs-lg-0 fs-xl-1 my-3"> Caring Children that not able to talk</h5>
+                            <p> rate :7/10</p><a class="stretched-link" href="#!">read Center info</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-4">
+                    <div class="card h-100 shadow card-span rounded-3"><img class="card-img-top rounded-top-3"
+                                                                            src="{% static 'assets/img/gallery/k.jpg' %}"
+                                                                            alt="news"/>
+                        <div class="card-body"><span class="fs--1 text-primary me-3">Health</span>
+                            <svg class="bi bi-calendar2 me-2" xmlns="http://www.w3.org/2000/svg" width="12"
+                                 height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"></path>
+                                <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"></path>
+                            </svg>
+                            <span class="fs--1 text-900">Nov 30, 2021</span><span class="fs--1"></span>
+                            <h5 class="font-base fs-lg-0 fs-xl-1 my-3">Caring Childern that not able to talk</h5>
+                            <p> reate:6/10</p><a class="stretched-link" href="#!">read center info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
