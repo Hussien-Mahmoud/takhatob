@@ -4,13 +4,17 @@ from django.urls import reverse_lazy
 from django.contrib.auth import login
 
 
-from .forms import ClientSignUpForm, CenterSignupForm
+from .forms import ClientSignUpForm, CenterSignUpForm, SpecialistSignUpForm
 from .models import Center
 
 # Create your views here.
 
 
-def sign_up(request):
+def sign_up_choice(request):
+    return render(request, 'registration/sign_up_choice.html')
+
+
+def client_sign_up(request):
     if request.method == 'GET':
         form = ClientSignUpForm()
 
@@ -30,10 +34,10 @@ def sign_up(request):
 
 def center_sign_up(request):
     if request.method == 'GET':
-        form = CenterSignupForm()
+        form = CenterSignUpForm()
 
     elif request.method == 'POST':
-        form = CenterSignupForm(request.POST)
+        form = CenterSignUpForm(request.POST)
         print(request.POST)
         if form.is_valid():
             user = form.save()
@@ -47,11 +51,20 @@ def center_sign_up(request):
     })
 
 
-def centers_list(request):
-    centers = Center.objects.all()
-    return render(request, 'centers/CenterPages.html', {'centers': centers})
+def specialist_sign_up(request):
+    if request.method == 'GET':
+        form = SpecialistSignUpForm()
 
+    elif request.method == 'POST':
+        form = SpecialistSignUpForm(request.POST)
+        print(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect(reverse_lazy('home'))
+    else:
+        return HttpResponseNotAllowed(['GET', 'POST'])
 
-def center_details(request, id):
-    center = Center.objects.get(id=id)
-    return render(request, 'centers/center-details.html', {'center': center})
+    return render(request, 'registration/sign_up.html', {
+        'form': form
+    })

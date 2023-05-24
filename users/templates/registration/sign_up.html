@@ -1,36 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Sign up{% endblock %}
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
 {% endblock %}
 
-{% block content %}
-    <div class="header">
-        <div class="container">
-            <h2 class="logo">Happy Helper</h2>
-            <nav>
-                <i class="fas fa-bars toggle-menu"></i>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Find Specialists</a></li>
-                    <li><a href="#">Find Centers</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </nav>
-            <div>
-                <button onclick="window.location.href = '{% url 'login' %}';" class="login">Login</button>
-            </div>
-        </div>
+{% block inner-content %}
+{#    <div class="header">#}
+{#        <div class="container">#}
+{#            <h2 class="logo">Happy Helper</h2>#}
+{#            <nav>#}
+{#                <i class="fas fa-bars toggle-menu"></i>#}
+{#                <ul>#}
+{#                    <li><a href="#">Home</a></li>#}
+{#                    <li><a href="#">Find Specialists</a></li>#}
+{#                    <li><a href="#">Find Centers</a></li>#}
+{#                    <li><a href="#">Contact Us</a></li>#}
+{#                </ul>#}
+{#            </nav>#}
+{#            <div>#}
+{#                <button onclick="window.location.href = '{% url 'login' %}';" class="login">Login</button>#}
+{#            </div>#}
+{#        </div>#}
 
         <div class="sign">
             <div class="container">
                 <div class="main-sign">
                     <form action="" method="post">
                         {% csrf_token %}
-                        <h2> Create New Account</h2>
+                        <h2>Create New Account</h2>
                         {{form.non_field_errors}}
                         {% for field in form %}
                         <div class="input">
@@ -43,5 +43,5 @@
                 </div>
             </div>
         </div>
-    </div>
+{#    </div>#}
 {% endblock %}

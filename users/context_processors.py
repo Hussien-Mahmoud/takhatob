@@ -3,9 +3,9 @@ from . import models
 
 def users(request):
     return {
-        'clients': models.Client.objects.all(),
-        'centers': models.Center.objects.all(),
-        'specialists': models.Specialist.objects.all(),
+        'clients': models.User.objects.filter(id__in=models.Client.objects.all()),
+        'centers': models.User.objects.filter(id__in=models.Center.objects.all()),
+        'specialists': models.User.objects.filter(id__in=models.Specialist.objects.all()),
     }
 
 #

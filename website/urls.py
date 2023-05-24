@@ -25,7 +25,7 @@ urlpatterns = [
     path('accounts/', include('users.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('centers/', include('centers.urls')),
-    # path('specialists/', include('specialists.urls')),
+    path('specialists/', include('specialists.urls')),
     path('', include('main.urls')),
 
     re_path('^tinymce/', include('tinymce.urls')),

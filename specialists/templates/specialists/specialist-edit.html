@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    {{ form.media }}
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block inner-content %}
+
+    <div class="profile">
+        <div class="container">
+            <div class="setting">
+                <h3>Profile Setting</h3>
+            </div>
+            <div class="profile-detail">
+                <div class="profile-info">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-info" id="image-block">
+                            <img src="{{ specialist.image.url }}" alt="">
+
+                            <label class="image-upload" for="id_image">
+                                <i class="fa fa-upload"></i>
+                                Upload Image
+                            </label>
+                            {{ form.image }}
+                        </div>
+
+                        <div class="form-info">
+                            <h4>{{ form.first_name.label }}</h4>
+                            {{ form.first_name }}
+                        </div>
+
+                        <div class="form-info">
+                            <h4>{{ form.last_name.label }}</h4>
+                            {{ form.last_name }}
+                        </div>
+
+                        <div class="form-info">
+                            <h4>{{ form.experience.label }}</h4>
+                            {{ form.experience }}
+                        </div>
+
+                        <div class="form-info">
+                            <h4>{{ form.excerpt.label }}</h4>
+                            {{ form.excerpt }}
+                        </div>
+
+                        <div class="form-info">
+                            <h4>{{ form.description.label }}</h4>
+                            {{ form.description }}
+                        </div>
+                        <input type="submit" class="sub" value="Save Changes">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -83,10 +83,18 @@ class Center(User):
 
 
 class Specialist(User):
+    excerpt = models.CharField(max_length=100, null=True, blank=True)
     description = HTMLField(null=True, blank=True)  # TextField inside
-    image = models.ImageField(upload_to='images/specialists/profile_images/')
+    experience = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(
+        upload_to='images/specialists/profile_images/',
+        default='images/centers/default-placeholder.png',
+    )
 
     REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    def get_absolute_url(self):
+        return reverse('specialist-details', args=[self.id])
 
     class Meta:
         verbose_name = 'specialist'

@@ -6,28 +6,34 @@
 {% endblock %}
 
 {% block inner-content %}
-    <div class="center-detail">
+    <div class="special">
         <div class="container">
             <div class="content">
-                <h2>{{ center.username }} Center</h2>
-                {% if center.excerpt is not None %}
-                    <p>{{ center.excerpt }}</p>
+                <h3>{{ specialist.first_name }}
+                    {% if specialist.last_name %}
+                        {{ specialist.last_name }}
+                    {% endif %}
+                </h3>
+
+                {% if specialist.excerpt is not None %}
+                    <p>{{ specialist.excerpt }}</p>
                 {% endif %}
-                <span>Description</span>
-                <ul style="list-style: none">
-                    <li>{{ center.description|safe }}</li>
-                </ul>
-                <div class="para">
+                 {% if specialist.description is not None %}
+                    <ul style="list-style: none">
+                        <span>{{ specialist.description|safe }}</span>
+                    </ul>
+                {% endif %}
+                <div class="mark">
                     <p><span>Average Rating: </span>{{ average_rating }}/10</p>
-                    {% if center.experience is not None %}
-                        <p><span>Experience: </span>{{ center.experience }} years</p>
+                    {% if specialist.experience is not None %}
+                        <p><span>Experience: </span>{{ specialist.experience }} years</p>
                     {% endif %}
                 </div>
             </div>
             <div class="image">
-                <img src="{{ center.image.url }}" alt="">
-                {% if user.id == center.id %}
-                <button onclick="window.location.href = '{% url 'center-edit' center.id %}';">edit</button>
+                <img src="{{ specialist.image.url }}" alt="">
+                {% if user.id == specialist.id %}
+                <button onclick="window.location.href = '{% url 'specialist-edit' specialist.id %}';">edit</button>
                 {% endif %}
             </div>
         </div>
@@ -35,7 +41,7 @@
 
     <div class="reviews">
         <h1>Reviews</h1>
-    {% if user in clients and not user in reviews.client %}
+        {% if user in clients and not user in reviews.client %}
         <form action="" method="POST">
             <div class="review">
                 <h4> Your review</h4>
@@ -46,13 +52,12 @@
                 <input type="submit" value="add Review" class="mit">
             </div>
         </form>
-    {% endif %}
+        {% endif %}
 
         <div class="container">
             <ul>
-
-            {% if center.reviews.all %}
-                {% for review in center.reviews.all %}
+            {% if specialist.reviews.all %}
+                {% for review in specialist.reviews.all %}
                 <li class="shadow">
                     <div>
                         <h4>{{ review.client.first_name }} {{ review.client.last_name }}</h4>
@@ -64,7 +69,6 @@
                 </li>
                 {% endfor %}
             {% endif %}
-
             </ul>
         </div>
     </div>

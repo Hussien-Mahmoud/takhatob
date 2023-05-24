@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block inner-content %}
+    <section class="pb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 py-3"></div>
+                <h1 class="text-center">choose how to want to sign up</h1>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <ul>
+            <li><a href="{% url 'client-sign-up' %}">as a client</a></li>
+            <li><a href="{% url 'center-sign-up' %}">as a center</a></li>
+            <li><a href="{% url 'specialist-sign-up' %}">as a specialist</a></li>
+        </ul>
+    </section>
+{% endblock %}

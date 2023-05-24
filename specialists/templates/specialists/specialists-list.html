@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+{% endblock %}
+
+{% block inner-content %}
+
+    <section class="pb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 py-3"></div>
+                <h1 class="text-center">Our Specialists</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="specialists">
+        <div class="container">
+            {% for specialist in specialists %}
+            <div class="box1">
+                <img src="{{ specialist.image.url }}" alt="" height="168" width="168" style="border-radius: 50%;">
+                <div class="text">
+                    <h3>{{ specialist.first_name }}
+                    {% if specialist.last_name %}
+                        {{ specialist.last_name }}
+                    {% endif %}
+                    </h3>
+                    {% if specialist.reviews.rate > 0 %}
+                        <p>Rate: 7/10</p>
+                    {% endif %}
+                    {% if specialist.experience %}
+                        <p>Experience: {{ specialist.experience }} year{{ specialist.experience|pluralize }}</p>
+                    {% endif %}
+                </div>
+                <a href="{{ specialist.get_absolute_url }}">View Profile</a>
+            </div>
+            {% endfor %}
+
+
+            <div class="box1">
+                <img src="{% static 'assets/img/gallery/jane.png' %}" alt="">
+                <div class="text">
+                    <h3>Jane</h3>
+                    <p>Rate: 8/10</p>
+                    <p> Experience: 4 years</p>
+                </div>
+                <a href="#">View Profile</a>
+            </div>
+            <div class="box1">
+                <img src="assets/img/gallery/leo-mario.png" alt="">
+
+                <div class="text">
+                    <h3>Leo-Mario</h3>
+                    <p> Rate: 9/10</p>
+                    <p> Experience: 8 years</p>
+                </div>
+                <a class="active" href="http://127.0.0.1:5500/live-doc-v1.0.0/public/special-detail.html"
+                   target="_blank">View
+                    Profile</a>
+
+            </div>
+            <div class="box1">
+                <img src="assets/img/gallery/anita.png" alt="">
+                <div class="text">
+                    <h3>Anita</h3>
+                    <p> Rate: 7/10</p>
+                    <p> Experience: 1 years</p>
+                </div>
+                <a href="#">View Profile</a>
+            </div>
+            <div class="box1">
+                <img src="assets/img/gallery/jane.png" alt="">
+                <div class="text">
+                    <h3>Jane</h3>
+                    <p> Rate: 8/10</p>
+                    <p> Experience: 4 years</p>
+                </div>
+                <a href="#">View Profile</a>
+            </div>
+            <div class="box1">
+                <img src="assets/img/gallery/leo-mario.png" alt="">
+                <div class="text">
+                    <h3>Leo-Mario</h3>
+                    <p> Rate: 9/10</p>
+                    <p> Experience: 8 Years</p>
+                </div>
+                <a class="active" href="#">View Profile</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
