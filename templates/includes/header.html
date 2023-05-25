@@ -20,8 +20,10 @@
             {% else %}
                 {% if user in specialists or user in clients %}
                     <h3 class="rounded-pill order-1 order-lg-0 ms-lg-4">{{ user.first_name }}</h3>
+                    <a href="{% url 'logout' %}">Logout</a>
                 {% else %}
                     <h3 class="rounded-pill order-1 order-lg-0 ms-lg-4">{{ user.username }}</h3>
+                    <a href="{% url 'logout' %}">Logout</a>
                 {% endif %}
             {% endif %}
         </div>
