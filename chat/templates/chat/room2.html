@@ -1,0 +1,139 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Chat</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/favicons/apple-touch-icon.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/img/favicons/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/img/favicons/favicon-16x16.png'%}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicons/favicon.ico'%}">
+    <link rel="manifest" href="{% static 'assets/img/favicons/manifest.json'%}">
+    <meta name="msapplication-TileImage" content="{% static 'assets/img/favicons/mstile-150x150.png'%}">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'chat/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'chat/bootstrap.min.css' %}">
+    <link href="{% static 'assets/css/theme.css'%}" rel="stylesheet">
+{#    <link rel="stylesheet" href="{% static 'chat/style2.css' %}">#}
+
+</head>
+
+<body>
+<main>
+    {% include 'includes/header.html' %}
+    <div class="ChatP">
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card chat-app">
+                    <div id="plist" class="people-list">
+
+                        <ul class="list-unstyled chat-list mt-2 mb-0">
+                            {% if user.is_specialist %}
+                                {% for chat in all_chats %}
+                                    {% with chat.client as client %}
+                                    <li class="clearfix"
+                                            onclick="window.location.href='{% url 'chat:chat-room' chat.name %}'">
+                                        <div class="about">
+                                            <div class="name">{{ client.get_full_name }}</div>
+                                        </div>
+                                    </li>
+                                    {% endwith %}
+                                {% endfor %}
+
+                            {% elif user.is_client %}
+
+                                {% for chat in all_chats %}
+                                    {% with chat.specialist as specialist %}
+                                    <li class="clearfix" onclick="window.location.href='{% url 'chat:chat-room' chat.name %}'">
+                                        <img src="{{ specialist.image.url }}" alt="avatar">
+                                        <div class="about">
+                                            <div class="name">{{ specialist.get_full_name }}</div>
+                                        </div>
+                                    </li>
+                                    {% endwith %}
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <div class="chat">
+                        <div class="chat-header clearfix">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    {% if user.is_client %}
+                                        <a href="{{ room.specialist.get_absolute_url }}" data-toggle="modal" data-target="#view_info">
+                                            <img src="{{ room.specialist.image.url }}" alt="avatar">
+                                        </a>
+                                        <div class="chat-about">
+                                            <h6 class="m-b-0">{{ room.specialist.get_full_name }}</h6>
+                                        </div>
+                                    {% elif user.is_specialist %}
+                                        <div class="chat-about">
+                                            <h6 class="m-b-0">{{ room.client.get_full_name }}</h6>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-history">
+                            <ul id="chat" class="m-b-0">
+                                {% for message in messages %}
+                                    <li class="clearfix">
+                                        <div class="message-data{% if message.sender.id != user.id %} text-right{% endif %}">
+                                            <span class="message-data-time">{{ message.send_date|date:"h:i A, M d Y" }}</span>
+                                            {% if message.sender.is_specialist and user.is_client %}
+                                                <img src="{{ room.specialist.image.url }}" alt="avatar">
+                                            {% endif %}
+                                        </div>
+                                        <div class="message{% if message.sender.id != user.id %} other-message float-right{% else %} my-message{% endif %}">
+                                            {{ message.message }}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                        <div class="chat-message clearfix">
+                            <div class="input-group mb-0">
+                                <div class="input-group-prepend">
+                                    <button id="chat-message-submit" class="input-group-text">
+                                        <i class="fa fa-send"></i>
+                                    </button>
+                                </div>
+                                <input id="chat-message-input" type="text" class="form-control" placeholder="Enter text here...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+{{ room.name|json_script:"room-uuid" }}
+{{ request.user.id|json_script:"request-user-id" }}
+<script src="{% static 'chat/chat_script2.js' %}"></script>
+
+</body>
+</html>

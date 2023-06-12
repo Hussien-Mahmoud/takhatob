@@ -8,11 +8,17 @@
         <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
                 <li class="nav-item px-2"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-                <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="#about">About Us</a>
-                </li>
+                <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="#about">About Us</a></li>
                 <li class="nav-item px-2"><a class="nav-link" href="{% url 'specialists-list' %}">Specialists</a></li>
                 <li class="nav-item px-2"><a class="nav-link" href="{% url 'centers-list' %}">Centers</a></li>
                 <li class="nav-item px-2"><a class="nav-link" href="#findUs">Contact</a></li>
+                {% if user.is_specialist or user.is_center %}
+                    <li class="nav-item px-2"><a class="nav-link" href="{{ user.get_absolute_url }}">account</a></li>
+                {% endif %}
+
+                {% if user.is_specialist or user.is_client %}
+                    <li class="nav-item px-2"><a class="nav-link" href="{{ user.room }}">Chats</a></li>
+                {% endif %}
             </ul>
 
             {% if user.is_anonymous %}

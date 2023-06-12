@@ -26,13 +26,15 @@ SECRET_KEY = 'django-insecure-w&m#9+vh*3sisgu(wio=ram*8z!hw(u!_6u8th+y))xy*!2z&n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://takhatob-production.up.railway.app']
+ALLOWED_HOSTS = []
+# CSRF_TRUSTED_ORIGINS = ['https://takhatob-production.up.railway.app']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 'daphne',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,14 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'whitenoise.runserver_nostatic',
-    'tinymce',
-
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
     'chat.apps.ChatConfig',
     'centers.apps.CentersConfig',
     'specialists.apps.SpecialistsConfig',
+
+    'whitenoise.runserver_nostatic',
+    'tinymce',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +151,17 @@ AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+
+ASGI_APPLICATION = 'website.asgi.application'
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+        # 'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        # 'CONFIG': {
+        #     'hosts': [("redis://default:Zg9MslepA7zFvfXo33AV@containers-us-west-42.railway.app:7506")],
+        # },
+    }
+}

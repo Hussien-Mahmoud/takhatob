@@ -1,0 +1,82 @@
+.container p {
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: initial;
+
+}
+
+.container .row {
+    margin-left: 50px;
+}
+
+.container .row .new {
+    margin-left: 200px;
+    margin-top: 57px;
+    width: 50%;
+    position: relative;
+}
+
+
+.container .row .new .one {
+    margin-right: 30px;
+    width: 30%;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.container .row .new .two {
+    margin-right: 27px;
+    width: 30%;
+    border-radius: 50%;
+    position: absolute;
+    right: 140px;
+    top: 0px;
+}
+
+.container .row .new .three {
+    margin-right: 0px;
+    width: 30%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    right: -152px;
+}
+
+.container .row .new img {
+    cursor: pointer;
+}
+
+.container .row .new img:hover {
+    margin-top: 10px;
+    transition: 0.4s;
+
+}
+
+.container .row .new p {
+    margin-left: 80px;
+    margin-top: 13px;
+    font-size: larger;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: absolute;
+    top: 212px;
+}
+
+.container .row .new p:hover {
+    color: black;
+}
+
+.container .row .new .five {
+    position: absolute;
+    left: 335px;
+}
+
+.container .row .new .four {
+    position: absolute;
+    left: -3px;
+}
+
+.container .row .new .six {
+    position: absolute;
+    left: 646px;
+}

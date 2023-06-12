@@ -1,20 +1,48 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'users/css/choice-page.css' %}">
+{% endblock %}
 
 {% block inner-content %}
-    <section class="pb-0">
+    <section class="py-xxl-10 pb-0" id="home">
+        <div class="bg-holder bg-size"
+             style="background-image:url({% static 'assets/img/gallery/hero-bg.png' %});background-position:top center;background-size:cover;">
+        </div>
+        <!--/.bg-holder-->
+
         <div class="container">
-            <div class="row">
-                <div class="col-12 py-3"></div>
-                <h1 class="text-center">choose how to want to sign up</h1>
+            <p>Login or Sign up as :</p>
+            <div class="row min-vh-xl-100 min-vh-xxl-25">
+                <div class="new">
+
+                    <a href="{% url 'specialist-sign-up' %}">
+                        <img class="one" src="{% static 'assets/img/gallery/anita.png' %}" alt="">
+                    </a>
+
+                    <a href="{% url 'client-sign-up' %}">
+                    <p class="four">client</p>
+                    </a>
+
+                    <a href="{% url 'client-sign-up' %}">
+                        <img class="two" src="{% static 'assets/img/gallery/do2.jpg' %}" alt="">
+                    </a>
+
+                    <a href="{% url 'specialist-sign-up' %}">
+                        <p class="five">Specialist</p>
+                    </a>
+
+                    <a href="{% url 'center-sign-up' %}">
+                        <img class="three" src="{% static 'assets/img/gallery/health-care.png' %}" alt="">
+                    </a>
+
+                     <a href="{% url 'center-sign-up' %}">
+                        <p class="six">Center</p>
+                    </a>
+
+                </div>
             </div>
         </div>
-    </section>
-
-    <section>
-        <ul>
-            <li><a href="{% url 'client-sign-up' %}">as a client</a></li>
-            <li><a href="{% url 'center-sign-up' %}">as a center</a></li>
-            <li><a href="{% url 'specialist-sign-up' %}">as a specialist</a></li>
-        </ul>
     </section>
 {% endblock %}

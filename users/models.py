@@ -62,6 +62,27 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
+    def is_client(self) -> bool:
+        try:
+            Client.objects.get(id=self.id)
+            return True
+        except:
+            return False
+
+    def is_center(self) -> bool:
+        try:
+            Center.objects.get(id=self.id)
+            return True
+        except:
+            return False
+
+    def is_specialist(self) -> bool:
+        try:
+            Specialist.objects.get(id=self.id)
+            return True
+        except:
+            return False
+
 
 class Center(User):
     excerpt = models.CharField(max_length=100, null=True, blank=True)

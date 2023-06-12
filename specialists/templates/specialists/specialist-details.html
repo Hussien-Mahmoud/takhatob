@@ -33,7 +33,13 @@
             <div class="image">
                 <img src="{{ specialist.image.url }}" alt="">
                 {% if user.id == specialist.id %}
-                <button onclick="window.location.href = '{% url 'specialist-edit' specialist.id %}';">edit</button>
+                    <button onclick="window.location.href = '{% url 'specialist-edit' specialist.id %}';">edit</button>
+                {% elif user.is_client %}
+                    {% if opened_chat %}
+                        <button onclick="window.location.href = '{% url 'chat:chat-room' opened_chat.name %}';">Open Chat</button>
+                    {% else %}
+                        <button onclick="window.location.href = '{% url 'chat:chat-requisition' specialist.id %}';">Request Chat</button>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

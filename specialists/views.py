@@ -7,6 +7,7 @@ from django.db.models import Avg
 from users.models import Specialist, Client
 from .forms import SpecialistEditForm, SpecialistAddReviewForm
 from .models import SpecialistReviews
+from chat.models import Room
 
 
 # Create your views here.
@@ -45,10 +46,18 @@ def specialist_details(request, id):
 
     average = int(SpecialistReviews.objects.filter(specialist=specialist)
                   .aggregate(Avg('rate')).get('rate__avg') or 0)
+
+    client = Client.objects.filter(id=request.user.id)
+    try:
+        opened_chat = Room.objects.get(specialist=specialist, client=client[0] if client else Client.objects.none())
+    except:
+        opened_chat = None
+
     return render(request, 'specialists/specialist-details.html', {
         'reviews': SpecialistReviews,
         'average_rating': average,
         'specialist': specialist,
+        'opened_chat': opened_chat,
         'form': form,
     })
 
