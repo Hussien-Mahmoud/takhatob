@@ -9,10 +9,6 @@ from users.models import Client, Specialist
 
 # Create your views here.
 
-def chats(request):
-    pass
-
-
 @login_required
 def chat_room(request, room_uuid=None):
     try:

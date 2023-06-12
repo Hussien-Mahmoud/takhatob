@@ -51,12 +51,14 @@
                             {% if user.is_specialist %}
                                 {% for chat in all_chats %}
                                     {% with chat.client as client %}
-                                    <li class="clearfix"
+
+                                    <li class="clearfix {% if room.client == client %}active{% endif %}"
                                             onclick="window.location.href='{% url 'chat:chat-room' chat.name %}'">
                                         <div class="about">
                                             <div class="name">{{ client.get_full_name }}</div>
                                         </div>
                                     </li>
+
                                     {% endwith %}
                                 {% endfor %}
 
@@ -64,12 +66,14 @@
 
                                 {% for chat in all_chats %}
                                     {% with chat.specialist as specialist %}
-                                    <li class="clearfix" onclick="window.location.href='{% url 'chat:chat-room' chat.name %}'">
+
+                                    <li class="clearfix {% if room.specialist == specialist %}active{% endif %}" onclick="window.location.href='{% url 'chat:chat-room' chat.name %}'">
                                         <img src="{{ specialist.image.url }}" alt="avatar">
                                         <div class="about">
                                             <div class="name">{{ specialist.get_full_name }}</div>
                                         </div>
                                     </li>
+
                                     {% endwith %}
                                 {% endfor %}
                             {% endif %}

@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from users.models import User, Specialist, Client
+from django.urls import reverse
 
 # Create your models here.
 
@@ -10,6 +11,9 @@ class Room(models.Model):
     specialist = models.ForeignKey(Specialist, on_delete=models.CASCADE, related_name='rooms')
     client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='rooms')
     date_created = models.DateTimeField(auto_now_add=True)
+
+    def get_absolut_url(self):
+        return reverse('chat:chat-room', args=[self.name])
 
     class Meta:
         ordering = ['-date_created']
