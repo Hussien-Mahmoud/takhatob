@@ -15,7 +15,12 @@ class SpecialistReviews(models.Model):
 
     class Meta:
         unique_together = [('client', 'specialist')]
-#
+
+
+class SpecialistCertifications(models.Model):
+    specialist = models.ForeignKey(Specialist, on_delete=models.CASCADE, related_name='certifications')
+    certification_image = models.ImageField(upload_to='images/specialists/certifications/')
+
 #
 # class ClientSubscription(models.Model):
 #     specialist = models.ForeignKey(Specialist, on_delete=models.CASCADE, related_name='subscriptions')

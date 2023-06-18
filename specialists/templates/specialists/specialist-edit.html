@@ -52,6 +52,15 @@
                             <h4>{{ form.description.label }}</h4>
                             {{ form.description }}
                         </div>
+
+                        <div class="form-info" id="image-block2">
+                            <label class="image-upload" for="id_certification_image">
+                                <i class="fa fa-upload"></i>
+                                Upload Certifications Images
+                            </label>
+                            <input type="file" name="certification_image" accept="image/*" multiple id="id_certification_image">
+                        </div>
+
                         <input type="submit" class="sub" value="Save Changes">
                     </form>
                 </div>

@@ -18,7 +18,7 @@
                 {% if specialist.excerpt is not None %}
                     <p>{{ specialist.excerpt }}</p>
                 {% endif %}
-                 {% if specialist.description is not None %}
+                {% if specialist.description is not None %}
                     <ul style="list-style: none">
                         <span>{{ specialist.description|safe }}</span>
                     </ul>
@@ -36,11 +36,32 @@
                     <button onclick="window.location.href = '{% url 'specialist-edit' specialist.id %}';">edit</button>
                 {% elif user.is_client %}
                     {% if opened_chat %}
-                        <button onclick="window.location.href = '{% url 'chat:chat-room' opened_chat.name %}';">Open Chat</button>
+                        <button onclick="window.location.href = '{% url 'chat:chat-room' opened_chat.name %}';">Open
+                            Chat
+                        </button>
                     {% else %}
-                        <button onclick="window.location.href = '{% url 'chat:chat-requisition' specialist.id %}';">Request Chat</button>
+                        <button onclick="window.location.href = '{% url 'chat:chat-requisition' specialist.id %}';">
+                            Request Chat
+                        </button>
                     {% endif %}
                 {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="certifications">
+        <h1 style="text-align: center;">Certifications</h1>
+        <div class="active" data-bs-interval="10000">
+            <div class="row h-100 m-lg-7 mx-3 mt-6 mx-md-4 my-md-7">
+                {% for certification in certifications %}
+                    <div class="col-md-4 mb-8 mb-md-0">
+                        <div class="card card-span h-100 shadow">
+                            <div class="card-body d-flex flex-column flex-center ">
+                                <img src="{{ certification.certification_image.url }}" alt="..." width="350">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

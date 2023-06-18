@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseNotAllowed, HttpResponseForbidden, HttpResponseBadRequest
 from django.urls import reverse
 
@@ -6,7 +6,7 @@ from django.db.models import Avg
 
 from users.models import Specialist, Client
 from .forms import SpecialistEditForm, SpecialistAddReviewForm
-from .models import SpecialistReviews
+from .models import SpecialistReviews, SpecialistCertifications
 from chat.models import Room
 
 
@@ -19,7 +19,7 @@ def specialists_list(request):
 
 
 def specialist_details(request, id):
-    specialist = Specialist.objects.get(id=id)
+    specialist = get_object_or_404(Specialist, id=id)
     form = SpecialistAddReviewForm()
     if request.method == 'GET':
         pass
@@ -53,10 +53,12 @@ def specialist_details(request, id):
     except:
         opened_chat = None
 
+    certifications = SpecialistCertifications.objects.filter(specialist=specialist)
     return render(request, 'specialists/specialist-details.html', {
         'reviews': SpecialistReviews,
         'average_rating': average,
         'specialist': specialist,
+        'certifications': certifications,
         'opened_chat': opened_chat,
         'form': form,
     })
@@ -64,22 +66,26 @@ def specialist_details(request, id):
 
 def specialist_edit(request, id):
     specialist = Specialist.objects.get(id=id)
+
+    if request.user.id != specialist.id:
+        return HttpResponseForbidden()
+
     if request.method == 'GET':
-        form = SpecialistEditForm()
+        form = SpecialistEditForm(instance=specialist)
 
     elif request.method == 'POST':
-        form = SpecialistEditForm(request.POST, request.FILES)
-        print(request.POST)
+        # Certifications upload form
+        files = request.FILES.getlist('certification_image')
+        if files:
+            SpecialistCertifications.objects.filter(specialist=specialist).delete()
+            for file in files:
+                SpecialistCertifications.objects.create(certification_image=file, specialist=specialist)
+
+        form = SpecialistEditForm(request.POST, request.FILES, instance=specialist)
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.id = id
-            instance.email = specialist.email
-            # instance.username = form.cleaned_data['username']
-            # instance.excerpt = form.cleaned_data['excerpt']
-            # instance.description = form.cleaned_data['description']
-            # instance.experience = form.cleaned_data['experience']
-            # instance.image = form.cleaned_data['image']
-            instance.save()
+            print(form.full_clean())
+            print(form.cleaned_data)
+            form.save()
 
             return redirect(reverse('specialist-details', args=[id]))
     else:
@@ -87,5 +93,5 @@ def specialist_edit(request, id):
 
     return render(request, 'specialists/specialist-edit.html', {
         'specialist': specialist,
-        'form': form
+        'form': form,
     })
