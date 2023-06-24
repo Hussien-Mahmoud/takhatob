@@ -9,7 +9,7 @@ class SpecialistEditForm(forms.ModelForm):
 
     class Meta:
         model = Specialist
-        fields = ['first_name', 'last_name', 'image', 'excerpt', 'description', 'experience']
+        fields = ['first_name', 'last_name', 'image', 'excerpt', 'description', 'experience', 'service_price']
         widgets = {'description': TinyMCE(attrs={'cols': 80, 'rows': 30})}
 
     def __init__(self, *args, **kwargs):

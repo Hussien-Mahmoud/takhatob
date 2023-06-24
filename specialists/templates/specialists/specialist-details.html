@@ -19,14 +19,14 @@
                     <p>{{ specialist.excerpt }}</p>
                 {% endif %}
                 {% if specialist.description is not None %}
-                    <ul style="list-style: none">
-                        <span>{{ specialist.description|safe }}</span>
-                    </ul>
+                    <div class="skills">
+                        {{ specialist.description|safe }}
+                    </div>
                 {% endif %}
                 <div class="mark">
-                    <p><span>Average Rating: </span>{{ average_rating }}/10</p>
+                    <p><span>Average Rating: </span>{{ specialist.average_rating }}/10</p>
                     {% if specialist.experience is not None %}
-                        <p><span>Experience: </span>{{ specialist.experience }} years</p>
+                        <p><span>Experience: </span>{{ specialist.experience }} year{{ specialist.experience|pluralize }}</p>
                     {% endif %}
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         </button>
                     {% else %}
                         <button onclick="window.location.href = '{% url 'chat:chat-requisition' specialist.id %}';">
-                            Request Chat
+                            Request Chat for 1 month: <strong>{{ specialist.service_price }}E£</strong>
                         </button>
                     {% endif %}
                 {% endif %}
@@ -49,6 +49,7 @@
         </div>
     </div>
 
+    {% if certifications %}
     <div class="certifications">
         <h1 style="text-align: center;">Certifications</h1>
         <div class="active" data-bs-interval="10000">
@@ -65,6 +66,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <div class="reviews">
         <h1>Reviews</h1>
@@ -87,7 +89,7 @@
                 {% for review in specialist.reviews.all %}
                 <li class="shadow">
                     <div>
-                        <h4>{{ review.client.first_name }} {{ review.client.last_name }}</h4>
+                        <h4>{{ review.client.get_full_name }}</h4>
                         <p>{{ review.text }}</p>
                     </div>
                     <span>
