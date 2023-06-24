@@ -1,82 +1,163 @@
-.container p {
-    font-size: xx-large;
-    font-weight: bold;
-    font-family: initial;
+/*.container p {*/
+/*    font-size: xx-large;*/
+/*    font-weight: bold;*/
+/*    font-family: initial;*/
 
+/*}*/
+
+/*.container .row {*/
+/*    margin-left: 50px;*/
+/*}*/
+
+/*.container .row .new {*/
+/*    margin-left: 200px;*/
+/*    margin-top: 57px;*/
+/*    width: 50%;*/
+/*    position: relative;*/
+/*}*/
+
+
+/*.container .row .new .one {*/
+/*    margin-right: 30px;*/
+/*    width: 30%;*/
+/*    border-radius: 50%;*/
+/*    position: absolute;*/
+/*}*/
+
+/*.container .row .new .two {*/
+/*    margin-right: 27px;*/
+/*    width: 30%;*/
+/*    border-radius: 50%;*/
+/*    position: absolute;*/
+/*    right: 140px;*/
+/*    top: 0px;*/
+/*}*/
+
+/*.container .row .new .three {*/
+/*    margin-right: 0px;*/
+/*    width: 30%;*/
+/*    border-radius: 50%;*/
+/*    position: absolute;*/
+/*    top: 0px;*/
+/*    right: -152px;*/
+/*}*/
+
+/*.container .row .new img {*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.container .row .new img:hover {*/
+/*    margin-top: 10px;*/
+/*    transition: 0.4s;*/
+
+/*}*/
+
+/*.container .row .new p {*/
+/*    margin-left: 80px;*/
+/*    margin-top: 13px;*/
+/*    font-size: larger;*/
+/*    font-weight: bold;*/
+/*    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+/*    position: absolute;*/
+/*    top: 212px;*/
+/*}*/
+
+/*.container .row .new p:hover {*/
+/*    color: black;*/
+/*}*/
+
+/*.container .row .new .five {*/
+/*    position: absolute;*/
+/*    left: 335px;*/
+/*}*/
+
+/*.container .row .new .four {*/
+/*    position: absolute;*/
+/*    left: -3px;*/
+/*}*/
+
+/*.container .row .new .six {*/
+/*    position: absolute;*/
+/*    left: 646px;*/
+/*}*/
+
+
+ .options .container .BOX img:nth-child(1){
+  height:200px;
+  width: 200px;
+  border-radius: 50%;
+}
+.options .container{
+  height: 100vh;
+  width: 40%;
+    transform: translateY(-150px);
+}
+@media(min-width:1540px){
+    .options .container{
+        transform: translateY(-250px);
+    }
+}
+.options .BOX{
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+   margin: auto;
+  margin-top: 100px;
+}
+.options .container .BOX .box1{
+  display: flex;
+  flex-direction: column;
+    margin-right: 50px;
+}
+.options .container .BOX .box1 a{
+  text-decoration: none;
+  color: #283779;
+  margin-top: 20px;
+  display: block;
+ display: flex;
+ justify-content: center;
+    font-size: 25px;
+}
+ .options .container h1{
+  margin-top: 100px;
+  font-size: 40px;
+ }
+ @media(max-width:990px){
+  .options .container{
+    height: 160vh;
+  }
+  .options .container .BOX{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .options .container  .BOX .box1{
+    display: flex;
+    flex-direction: column;
+
+
+  }
+ }
+  .options .container img{
+   margin: auto;
+  }
+  .options .container .BOX .box1 a{
+    margin-bottom: 15px;
+  }
+
+.options .container h1{
+  font-size: 40px;
+  width: 100%;
+  line-height: 1.7;
 }
 
-.container .row {
-    margin-left: 50px;
-}
+ @media(max-width:667px){
+  .options h1{
+    font-size: 10px;
+  }
+ }
 
-.container .row .new {
-    margin-left: 200px;
-    margin-top: 57px;
-    width: 50%;
-    position: relative;
-}
-
-
-.container .row .new .one {
-    margin-right: 30px;
-    width: 30%;
-    border-radius: 50%;
-    position: absolute;
-}
-
-.container .row .new .two {
-    margin-right: 27px;
-    width: 30%;
-    border-radius: 50%;
-    position: absolute;
-    right: 140px;
-    top: 0px;
-}
-
-.container .row .new .three {
-    margin-right: 0px;
-    width: 30%;
-    border-radius: 50%;
-    position: absolute;
-    top: 0px;
-    right: -152px;
-}
-
-.container .row .new img {
-    cursor: pointer;
-}
-
-.container .row .new img:hover {
-    margin-top: 10px;
-    transition: 0.4s;
-
-}
-
-.container .row .new p {
-    margin-left: 80px;
-    margin-top: 13px;
-    font-size: larger;
-    font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    position: absolute;
-    top: 212px;
-}
-
-.container .row .new p:hover {
-    color: black;
-}
-
-.container .row .new .five {
-    position: absolute;
-    left: 335px;
-}
-
-.container .row .new .four {
-    position: absolute;
-    left: -3px;
-}
-
-.container .row .new .six {
-    position: absolute;
-    left: 646px;
+img {
+    object-fit: cover;
+    align-self: center;
 }

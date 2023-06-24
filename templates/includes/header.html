@@ -8,16 +8,37 @@
         <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
                 <li class="nav-item px-2"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-                <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="#about">About Us</a></li>
+                <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="{% url 'home' %}#about">About Us</a></li>
                 <li class="nav-item px-2"><a class="nav-link" href="{% url 'specialists-list' %}">Specialists</a></li>
                 <li class="nav-item px-2"><a class="nav-link" href="{% url 'centers-list' %}">Centers</a></li>
-                <li class="nav-item px-2"><a class="nav-link" href="#findUs">Contact</a></li>
+                <li class="nav-item px-2"><a class="nav-link" href="{% url 'contact-us' %}">Contact Us</a></li>
                 {% if user.is_specialist or user.is_center %}
-                    <li class="nav-item px-2"><a class="nav-link" href="{{ user.get_absolute_url }}">account</a></li>
+                    <li class="nav-item px-2"><a class="nav-link" href="{{ current_user.get_absolute_url }}">Account</a></li>
                 {% endif %}
 
                 {% if chats %}
-                    <li class="nav-item px-2"><a class="nav-link" href="{{ chats }}">Chats</a></li>
+                    {% if user.is_specialist%}
+                        {% if current_user.has_requested_chats %}
+                            <li class="nav-item py-1 btn btn-sm btn-outline-warning rounded-pill ms-lg-2"><a class="nav-link" href="{{ chats }}">Chats</a></li>
+                        {% elif current_user.has_new_enabled_chats %}
+                            <li class="nav-item py-1 btn btn-sm btn-outline-success rounded-pill ms-lg-2"><a class="nav-link" href="{{ chats }}">Chats</a></li>
+                        {% else %}
+                            {# the default #}
+                            <li class="nav-item py-1 btn btn-sm btn-outline-info rounded-pill ms-lg-2"><a class="nav-link" href="{{ chats }}">Chats</a></li>
+                        {% endif %}
+                    {% elif user.is_client %}
+                        {% if current_user.has_requested_chats %}
+                            <li class="nav-item py-1 btn btn-sm btn-outline-warning rounded-pill ms-lg-2"><a class="nav-link" href="{{ chats }}">Chats</a></li>
+                        {% elif current_user.has_accepted_chats %}
+                            <li class="nav-item py-1 btn btn-sm btn-outline-info rounded-pill ms-lg-2"><a class="nav-link" href="{{ chats }}">Chats</a></li>
+                        {% else %}
+                            {# the default #}
+                            <li class="nav-item py-1 btn btn-sm btn-outline-info rounded-pill ms-lg-2"><a class="nav-link" href="{{ chats }}">Chats</a></li>
+                        {% endif %}
+                    {% else %}
+                        {# the default #}
+                        <li class="nav-item py-1 btn btn-sm btn-outline-info rounded-pill ms-lg-2"><a class="nav-link" href="{{ chats }}">Chats</a></li>
+                    {% endif %}
                 {% endif %}
             </ul>
 

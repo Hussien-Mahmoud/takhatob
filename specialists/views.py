@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseNotAllowed, HttpResponseForbidden, HttpResponseBadRequest
 from django.urls import reverse
 
-from django.db.models import Avg
-
 from users.models import Specialist, Client
 from .forms import SpecialistEditForm, SpecialistAddReviewForm
 from .models import SpecialistReviews, SpecialistCertifications
@@ -44,9 +42,6 @@ def specialist_details(request, id):
     else:
         return HttpResponseNotAllowed(['GET', 'POST'])
 
-    average = int(SpecialistReviews.objects.filter(specialist=specialist)
-                  .aggregate(Avg('rate')).get('rate__avg') or 0)
-
     client = Client.objects.filter(id=request.user.id)
     try:
         opened_chat = Room.objects.get(specialist=specialist, client=client[0] if client else Client.objects.none())
@@ -56,7 +51,6 @@ def specialist_details(request, id):
     certifications = SpecialistCertifications.objects.filter(specialist=specialist)
     return render(request, 'specialists/specialist-details.html', {
         'reviews': SpecialistReviews,
-        'average_rating': average,
         'specialist': specialist,
         'certifications': certifications,
         'opened_chat': opened_chat,
@@ -65,8 +59,7 @@ def specialist_details(request, id):
 
 
 def specialist_edit(request, id):
-    specialist = Specialist.objects.get(id=id)
-
+    specialist = get_object_or_404(Specialist, id=id)
     if request.user.id != specialist.id:
         return HttpResponseForbidden()
 
@@ -83,8 +76,6 @@ def specialist_edit(request, id):
 
         form = SpecialistEditForm(request.POST, request.FILES, instance=specialist)
         if form.is_valid():
-            print(form.full_clean())
-            print(form.cleaned_data)
             form.save()
 
             return redirect(reverse('specialist-details', args=[id]))

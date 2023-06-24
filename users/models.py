@@ -3,6 +3,10 @@ from tinymce.models import HTMLField
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
+from django.db.models import Avg
+
+
+from decimal import Decimal
 
 # from centers.models import CenterReviews
 
@@ -62,6 +66,12 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
+    def get_full_name(self):
+        if self.last_name:
+            return f'{self.first_name} {self.last_name}'.strip()
+        else:
+            return f'{self.first_name}'.strip()
+
     def is_client(self) -> bool:
         try:
             Client.objects.get(id=self.id)
@@ -99,6 +109,9 @@ class Center(User):
     def get_absolute_url(self):
         return reverse('center-details', args=[self.id])
 
+    def average_rating(self):
+        return int(self.reviews.aggregate(Avg('rate')).get('rate__avg') or 0)
+
     class Meta:
         verbose_name = 'center'
 
@@ -106,7 +119,8 @@ class Center(User):
 class Specialist(User):
     excerpt = models.CharField(max_length=100, null=True, blank=True)
     description = HTMLField(null=True, blank=True)  # TextField inside
-    experience = models.IntegerField(null=True, blank=True)
+    experience = models.IntegerField(null=True, blank=True, default=0)
+    service_price = models.DecimalField(max_digits=9, decimal_places=2, default=Decimal(0.00))
     image = models.ImageField(
         upload_to='images/specialists/profile_images/',
         default='images/centers/default-placeholder.png',
@@ -117,14 +131,31 @@ class Specialist(User):
     def get_absolute_url(self):
         return reverse('specialist-details', args=[self.id])
 
+    def has_requested_chats(self):
+        requested_chats = self.rooms.filter(status='REQUESTED')
+        return bool(requested_chats)
+
+    def has_new_enabled_chats(self):
+        chats = self.rooms.filter(status='ENABLED').filter(messages__sender_id=self.id)
+        return not bool(chats)
+
+    def average_rating(self):
+        return int(self.reviews.aggregate(Avg('rate')).get('rate__avg') or 0)
+
     class Meta:
         verbose_name = 'specialist'
 
 
 class Client(User):
-    # center_review = models.ManyToManyField(Center, through=CenterReviews, related_name='review')
-    # specialist_review = models.ManyToManyField(Specialist, through=SpecialistReviews, related_name='review')
     REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    def has_requested_chats(self):
+        requested_chats = self.rooms.filter(status='REQUESTED')
+        return bool(requested_chats)
+
+    def has_accepted_chats(self):
+        accepted_chats = self.rooms.filter(status='ACCEPTED')
+        return bool(accepted_chats)
 
     class Meta:
         verbose_name = 'client'

@@ -27,6 +27,7 @@ urlpatterns = [
     path('centers/', include('centers.urls')),
     path('specialists/', include('specialists.urls')),
     path('chat/', include('chat.urls')),
+    path('payment/', include('payment.urls')),
     path('', include('main.urls')),
 
     re_path('^tinymce/', include('tinymce.urls')),
