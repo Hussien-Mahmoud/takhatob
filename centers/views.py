@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseNotAllowed, HttpResponseForbidden, HttpResponseBadRequest
 from django.urls import reverse
 
@@ -54,23 +54,14 @@ def center_details(request, id):
 
 
 def center_edit(request, id):
-    center = Center.objects.get(id=id)
+    center = get_object_or_404(Center, id=id)
     if request.method == 'GET':
-        form = CenterEditForm()
+        form = CenterEditForm(instance=center)
 
     elif request.method == 'POST':
-        form = CenterEditForm(request.POST, request.FILES)
-        print(request.POST)
+        form = CenterEditForm(request.POST, request.FILES, instance=center)
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.id = id
-            instance.email = center.email
-            # instance.username = form.cleaned_data['username']
-            # instance.excerpt = form.cleaned_data['excerpt']
-            # instance.description = form.cleaned_data['description']
-            # instance.experience = form.cleaned_data['experience']
-            # instance.image = form.cleaned_data['image']
-            instance.save()
+            form.save()
 
             return redirect(reverse('center-details', args=[id]))
     else:

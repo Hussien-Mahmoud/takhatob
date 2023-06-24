@@ -13,10 +13,12 @@
                 {% if center.excerpt is not None %}
                     <p>{{ center.excerpt }}</p>
                 {% endif %}
+                {% if center.description %}
                 <span>Description</span>
                 <ul style="list-style: none">
                     <li>{{ center.description|safe }}</li>
                 </ul>
+                {% endif %}
                 <div class="para">
                     <p><span>Average Rating: </span>{{ average_rating }}/10</p>
                     {% if center.experience is not None %}
@@ -55,7 +57,7 @@
                 {% for review in center.reviews.all %}
                 <li class="shadow">
                     <div>
-                        <h4>{{ review.client.first_name }} {{ review.client.last_name }}</h4>
+                        <h4>{{ review.client.get_full_name }}</h4>
                         <p>{{ review.text }}</p>
                     </div>
                     <span>

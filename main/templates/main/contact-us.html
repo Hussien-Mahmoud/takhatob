@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block inner-content %}
+    <div class="contact">
+        <div class="container">
+            <div class="head">
+                <h1> Contact Us</h1>
+                <p>
+                    if you have any problem with our Website, Please Send us a massage!
+                    <br>
+                    We will replay to you as soon as possible.
+                </p>
+            </div>
+            <form class="form" method="post" action="">
+                {% csrf_token %}
+                <div class="inputs">
+                    <input type="text" placeholder="name" required>
+                    <input type="text" placeholder="phone" required>
+                </div>
+                <div class="In">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div>
+                    <textarea name="text" id="txt" placeholder="Message" cols="80" rows="16" required> </textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <section class="py-0 bg-secondary">
+            <div class="bg-holder opacity-25"
+                 style="background-image:url({% static 'assets/img/gallery/dot-bg.png' %});background-position:top left;margin-top:-3.125rem;background-size:auto;">
+            </div>
+        </section>
+    </div>
+{% endblock %}
