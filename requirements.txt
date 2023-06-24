@@ -15,7 +15,7 @@ Django==4.2.2
 django-storages==1.13.2
 django-tinymce==3.6.1
 google-api-core==2.11.1
-google-auth==2.20.0
+google-auth
 google-cloud-core==2.3.2
 google-cloud-storage==2.9.0
 google-crc32c==1.5.0
