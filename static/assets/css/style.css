@@ -186,9 +186,10 @@
     border-radius: 30px;
     padding: 20px 40px;
     width: fit-content;
-    margin: auto;
     background-color: white;
+    margin: auto;
     margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 .special .image {
@@ -482,6 +483,21 @@ max-width: 70%;
     margin-top: 40px;
 }
 
+.contact button {
+    text-decoration: none;
+    background-color: #299EF3;
+    display: block;
+    padding: 10px;
+    width: fit-content;
+    margin: 20px auto;
+    color: white;
+    border-radius: 6px;
+}
+
+.contact button:hover {
+    background-color: #283779;
+}
+
 @media (max-width: 990px) {
     .contact h1 {
         margin-bottom: 40px;
@@ -552,9 +568,10 @@ max-width: 70%;
     border-radius: 30px;
     padding: 20px 40px;
     width: fit-content;
-    margin: auto;
     background-color: white;
+    margin: auto;
     margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 .center-detail .image {
@@ -711,10 +728,15 @@ max-width: 70%;
     cursor: pointer;
 }
 
-.profile .container .profile-detail form input {
+.profile .container .profile-detail form input{
     margin-top: 15px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     border: 1px solid #ccc;
+
+}
+.profile .container .profile-detail form #id_excerpt{
+    width:60%;
+    padding: 5px;
 }
 
 .profile .container .profile-detail form input:focus {
@@ -834,19 +856,6 @@ max-width: 70%;
     .reviews .review #Review {
         width: 30%
     }
-}
-
-
-/* contact */
-.form a {
-    text-decoration: none;
-    background-color: #299EF3;
-    display: block;
-    padding: 10px;
-    width: fit-content;
-    margin: 20px auto;
-    color: white;
-    border-radius: 6px;
 }
 
 /*  style .css */
@@ -1122,15 +1131,20 @@ max-width: 70%;
         margin-right: 200px;
     }
 }
-  
-   
 
-   
-     
+/* اعاده تنسيق جزء specialits  */
+.special .container .skills p {
+    color: #777;
+}
 
+.special .container .upload h3 {
+    color: #299EF3;
+    font-size: 25px;
+    margin-top: 30px;
+}
 
-
-
-
-
-
+.special .container .upload img {
+    width: 400px;
+    height: 300px;
+    margin-top: 20px;
+}

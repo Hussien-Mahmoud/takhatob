@@ -3,6 +3,10 @@ body{
     margin-top:20px;
 }
 
+img{
+    object-fit: cover;
+}
+
 .card {
     background: #fff;
     transition: .5s;
@@ -36,6 +40,8 @@ body{
 
 .people-list .chat-list li {
     padding: 10px 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     list-style: none;
     border-radius: 3px
 }

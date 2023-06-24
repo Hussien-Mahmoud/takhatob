@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse
-from django.http import HttpResponseNotAllowed, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponseNotAllowed, HttpResponseNotFound, HttpResponseRedirect, HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 
@@ -18,7 +18,7 @@ def chat_room(request, room_uuid=None):
             # requesting /chat/
             room = Room.objects.filter()
     except:
-        raise HttpResponseNotFound
+        return HttpResponseNotFound()
 
     if request.user.is_client():
         if request.user.id != room.client.id:
@@ -49,17 +49,50 @@ def chat_requisition(request, specialist_id):
     try:
         specialist = Specialist.objects.get(id=specialist_id)
     except:
-        raise HttpResponseNotFound
+        return HttpResponseNotFound()
 
     if request.user.is_client():
         client = Client.objects.get(id=request.user.id)
-
         try:
-            room = Room.objects.create(client=client, specialist=specialist)
+            room = Room.objects.create(client=client, specialist=specialist, status=Room.Status.REQUESTED)
         except ValidationError:
             return HttpResponseNotAllowed("chat was already created previously!")
+
+        # after checks
 
     else:
         return HttpResponseNotAllowed("you're not allowed to open a chat")
 
+    return HttpResponseRedirect(reverse('chat:chat-room', args=[room.name]))
+
+
+@login_required
+def chat_approve(request, room_uuid):
+    if request.user.is_specialist():
+        try:
+            room = Room.objects.get(name=room_uuid)
+        except:
+            return HttpResponseNotFound()
+
+        if room.status == Room.Status.REQUESTED:
+            room.status = Room.Status.ACCEPTED
+            room.save()
+    else:
+        return HttpResponseForbidden()
+    return HttpResponseRedirect(reverse('chat:chat-room', args=[room.name]))
+
+
+@login_required
+def chat_deny(request, room_uuid):
+    if request.user.is_specialist():
+        try:
+            room = Room.objects.get(name=room_uuid)
+        except:
+            return HttpResponseNotFound()
+
+        if room.status == Room.Status.REQUESTED:
+            room.status = Room.Status.DISABLED
+            room.save()
+    else:
+        return HttpResponseForbidden()
     return HttpResponseRedirect(reverse('chat:chat-room', args=[room.name]))

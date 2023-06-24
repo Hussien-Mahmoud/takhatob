@@ -32,7 +32,6 @@
     <link rel="stylesheet" href="{% static 'chat/style2.css' %}">
     <link rel="stylesheet" href="{% static 'chat/bootstrap.min.css' %}">
     <link href="{% static 'assets/css/theme.css'%}" rel="stylesheet">
-{#    <link rel="stylesheet" href="{% static 'chat/style2.css' %}">#}
 
 </head>
 
@@ -52,13 +51,44 @@
                                 {% for chat in all_chats %}
                                     {% with chat.client as client %}
 
-                                    <li class="clearfix {% if room.client == client %}active{% endif %}"
-                                            onclick="window.location.href='{% url 'chat:chat-room' chat.name %}'">
-                                        <div class="about">
-                                            <div class="name">{{ client.get_full_name }}</div>
-                                        </div>
-                                    </li>
+                                        <li class="clearfix
+                                            {% if chat.status == 'ENABLED' %}
+                                                {% if room.is_new_for_specialist %}
+                                                    {% if room.client == client %}
+                                                        bg-success
+                                                    {% else %}
+                                                        bg-soft-success
+                                                    {% endif %}
+                                                {% else %}
+                                                    {% if room.client == client %}
+                                                        active
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% elif chat.status == 'REQUESTED' %}
+                                                {% if room.client == client %}
+                                                    bg-warning
+                                                {% else %}
+                                                    bg-soft-warning
+                                                {% endif %}
+                                            {% elif chat.status == 'ACCEPTED' %}
+                                                 {% if room.client == client %}
+                                                    bg-info
+                                                {% else %}
+                                                    bg-soft-info
+                                                {% endif %}
+                                            {% else %}
+                                                {% if room.client == client %}
+                                                    bg-danger
+                                                {% else %}
+                                                    bg-soft-danger
+                                                {% endif %}
+                                            {% endif %}
+                                                " onclick="window.location.href='{% url 'chat:chat-room' chat.name %}'">
 
+                                            <div class="about">
+                                                <div class="name">{{ client.get_full_name }}</div>
+                                            </div>
+                                        </li>
                                     {% endwith %}
                                 {% endfor %}
 
@@ -67,7 +97,40 @@
                                 {% for chat in all_chats %}
                                     {% with chat.specialist as specialist %}
 
-                                    <li class="clearfix {% if room.specialist == specialist %}active{% endif %}" onclick="window.location.href='{% url 'chat:chat-room' chat.name %}'">
+                                    <li class="clearfix
+                                            {% if chat.status == 'ENABLED' %}
+                                                {% if room.is_new_for_client %}
+                                                    {% if room.specialist == specialist %}
+                                                        bg-success
+                                                    {% else %}
+                                                        bg-soft-success
+                                                    {% endif %}
+                                                {% else %}
+                                                    {% if room.specialist == specialist %}
+                                                        active
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% elif chat.status == 'REQUESTED' %}
+                                                {% if room.specialist == specialist %}
+                                                    bg-warning
+                                                {% else %}
+                                                    bg-soft-warning
+                                                {% endif %}
+                                            {% elif chat.status == 'ACCEPTED' %}
+                                                 {% if room.specialist == specialist %}
+                                                    bg-info
+                                                {% else %}
+                                                    bg-soft-info
+                                                {% endif %}
+                                            {% else %}
+                                                {% if room.specialist == specialist %}
+                                                    bg-danger
+                                                {% else %}
+                                                    bg-soft-danger
+                                                {% endif %}
+                                            {% endif %}
+                                                " onclick="window.location.href='{% url 'chat:chat-room' chat.name %}'">
+
                                         <img src="{{ specialist.image.url }}" alt="avatar">
                                         <div class="about">
                                             <div class="name">{{ specialist.get_full_name }}</div>
@@ -99,23 +162,47 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-history">
-                            <ul id="chat" class="m-b-0">
-                                {% for message in messages %}
-                                    <li class="clearfix">
-                                        <div class="message-data{% if message.sender.id != user.id %} text-right{% endif %}">
-                                            <span class="message-data-time">{{ message.send_date|date:"h:i A, M d Y" }}</span>
-                                            {% if message.sender.is_specialist and user.is_client %}
-                                                <img src="{{ room.specialist.image.url }}" alt="avatar">
-                                            {% endif %}
-                                        </div>
-                                        <div class="message{% if message.sender.id != user.id %} other-message float-right{% else %} my-message{% endif %}">
-                                            {{ message.message }}
-                                        </div>
-                                    </li>
-                                {% endfor %}
 
-                            </ul>
+                        <div class="chat-history">
+                            {% if room.status == 'ENABLED' %}
+                                <ul id="chat" class="m-b-0">
+                                    {% for message in messages %}
+                                        <li class="clearfix">
+                                            <div class="message-data{% if message.sender.id != user.id %} text-right{% endif %}">
+                                                <span class="message-data-time">{{ message.send_date|date:"h:i A, M d Y" }}</span>
+                                                {% if message.sender.is_specialist and user.is_client %}
+                                                    <img src="{{ room.specialist.image.url }}" alt="avatar">
+                                                {% endif %}
+                                            </div>
+                                            <div class="message{% if message.sender.id != user.id %} other-message float-right{% else %} my-message{% endif %}">
+                                                {{ message.message }}
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% elif room.status == 'REQUESTED' %}
+                                {% if user.is_client %}
+                                    <h4>Wait for the specialist approval...</h4>
+                                {% elif user.is_specialist %}
+                                    <h3>do you want to approve {{ room.client.first_name }} to open a chat with you?</h3>
+                                    <div>
+                                        <a class="btn btn-sm rounded-pill order-0 order-lg-0 ms-lg-4 btn-secondary" href="{% url 'chat:chat-approve' room.name %}">Approve</a>
+                                        <a class="btn btn-sm rounded-pill order-1 order-lg-1 ms-lg-4 btn-outline-danger" href="{% url 'chat:chat-deny' room.name %}">Deny</a>
+                                    </div>
+                                {% endif %}
+                            {% elif room.status == 'ACCEPTED' %}
+                                {% if user.is_client %}
+                                    <h3>the specialist has accepted to open a chat with you!</h3>
+                                    <h4 class="text-1000">Pay now to start chatting!</h4>
+                                    <a class="btn btn-sm rounded-pill order-0 order-lg-0 ms-lg-4 btn-secondary" href="{% url 'payment:client-payment' room.specialist.id %}">Pay now</a>
+                                {% elif user.is_specialist %}
+                                    <h4>Wait for the client to pay...</h4>
+                                {% endif %}
+                            {% elif room.status == 'DISABLED' %}
+                                {% if user.is_client %}
+                                {% elif user.is_specialist %}
+                                {% endif %}
+                            {% endif %}
                         </div>
                         <div class="chat-message clearfix">
                             <div class="input-group mb-0">
