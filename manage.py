@@ -6,7 +6,11 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'website.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'website.settings.local_cloud_files')
+
+    import django
+    django.setup()
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
