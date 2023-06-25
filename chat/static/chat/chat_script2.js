@@ -6,7 +6,7 @@ const requestUser = JSON.parse(
     document.getElementById('request-user-id').textContent
 );
 
-const url = 'ws://' + window.location.host +
+const url = 'wss://' + window.location.host +
     '/ws/chat/room/' + roomId + '/';
 const chatSocket = new WebSocket(url);
 
