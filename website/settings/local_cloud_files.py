@@ -12,17 +12,6 @@ SECRET_KEY = CREDENTIALS['SECRET_KEY']
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
-DATABASES = {
-    'default': {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": CREDENTIALS['PGDATABASE'],
-        "USER": CREDENTIALS['PGUSER'],
-        "PASSWORD": CREDENTIALS['PGPASSWORD'],
-        "HOST": CREDENTIALS['PGHOST'],
-        "PORT": CREDENTIALS['PGPORT']
-    }
-}
-CONN_MAX_AGE = 60
 
 # Stripe settings
 STRIPE_PUBLISHABLE_KEY = CREDENTIALS['STRIPE_PUBLISHABLE_KEY']

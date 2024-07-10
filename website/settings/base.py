@@ -129,6 +129,12 @@ LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 ASGI_APPLICATION = 'website.asgi.application'
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "db.sqlite3",
+    }
+}
 
 CHANNEL_LAYERS = {
     'default': {
