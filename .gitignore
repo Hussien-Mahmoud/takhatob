@@ -1,6 +1,8 @@
 .idea/
 **.pyc
 staticfiles/
-credentials.json
 files/
 data/
+
+credentials.json
+.env
