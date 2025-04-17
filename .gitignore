@@ -1,5 +1,6 @@
-.idea
+.idea/
 **.pyc
-staticfiles
+staticfiles/
 credentials.json
 files/
+data/
