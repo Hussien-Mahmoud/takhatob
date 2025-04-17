@@ -19,7 +19,7 @@ from channels.security.websocket import AllowedHostsOriginValidator
 from channels.auth import AuthMiddlewareStack
 import chat.routing
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'website.settings.local_cloud_files')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'website.settings.prod')
 
 django_asgi_app = get_asgi_application()
 
