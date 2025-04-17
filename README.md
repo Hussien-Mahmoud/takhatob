@@ -237,10 +237,7 @@ Specialists offer professional services through the platform:
 
 Docker support for this project is currently under development and not yet ready for use.
 
-## Contributing
+## Contributors
 
-[Add contribution guidelines here]
-
-## License
-
-[Specify License Information]
+- [Hussien Mahmoud](https://github.com/Hussien-Mahmoud) - Project Lead and Backend Developer
+- [Ashraf M. Helmy](https://github.com/mansibaldaniya) - Fronend Developer
